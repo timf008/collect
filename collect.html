@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collect</title>
+    <link rel="stylesheet" href="collect.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Collect</h1>
+        <div class="user-info">
+            <div id="tokenBalance">Tokens: 0</div>
+            <div id="userCode">User Code: ----</div>
+        </div>
+    </div>
+
+    <!-- Character Grid -->
+    <div id="characterGrid" class="grid">
+        <!-- JS will insert 20 cards here -->
+    </div>
+
+    <!-- Redeem Modal -->
+    <div id="redeemModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle"></h2>
+            <p id="modalCost"></p>
+            <button id="confirmRedeem">Redeem</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="collect.js"></script>
+</body>
+</html>
+
