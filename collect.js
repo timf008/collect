@@ -14,12 +14,12 @@ const characters = [
     { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" }
 ];
 
-
 let currentUser = null;
 let pendingRedeemId = null;
 let pendingRedeemCost = null;
 
-
+// Your backend base URL
+const API = "https://collect-backend-tg58.onrender.com";
 
 // --------------------------------------
 // Load User
@@ -27,7 +27,7 @@ let pendingRedeemCost = null;
 async function loadUser() {
     const userId = localStorage.getItem("userCode");
 
-    const res = await fetch("/loadUser", {
+    const res = await fetch(`${API}/loadUser`, {
         method: "POST",
         body: JSON.stringify({ userId }),
         headers: { "Content-Type": "application/json" }
@@ -40,7 +40,6 @@ async function loadUser() {
 
     buildCharacterGrid();
 }
-
 
 // --------------------------------------
 // Build Character Grid
@@ -67,7 +66,6 @@ function buildCharacterGrid() {
     });
 }
 
-
 // --------------------------------------
 // Open Redeem Modal
 // --------------------------------------
@@ -81,7 +79,6 @@ function openModal(id, cost, name) {
     document.getElementById("redeemModal").style.display = "flex";
 }
 
-
 // --------------------------------------
 // Close Modal
 // --------------------------------------
@@ -89,14 +86,13 @@ function closeModal() {
     document.getElementById("redeemModal").style.display = "none";
 }
 
-
 // --------------------------------------
 // Confirm Redeem
 // --------------------------------------
 document.getElementById("confirmRedeem").addEventListener("click", async () => {
     const userId = localStorage.getItem("userCode");
 
-    const res = await fetch("/redeem", {
+    const res = await fetch(`${API}/redeem`, {
         method: "POST",
         body: JSON.stringify({
             userId,
@@ -116,9 +112,7 @@ document.getElementById("confirmRedeem").addEventListener("click", async () => {
     }
 });
 
-
 // --------------------------------------
 // Init
 // --------------------------------------
 loadUser();
-
