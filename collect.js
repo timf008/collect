@@ -2,16 +2,16 @@
 // Character List (20 total)
 // --------------------------------------
 const characters = [
-    { id: 101, name: "Little Slugger", cost: 5, img: "characters/slugger.png" },
-    { id: 102, name: "Strikeout King", cost: 10, img: "characters/strikeout_king.png" },
-    { id: 103, name: "Fastball Fred", cost: 5, img: "characters/fastball_fred.png" },
-    { id: 104, name: "Curveball Carl", cost: 5, img: "characters/curveball_carl.png" },
-    { id: 105, name: "Home Run Hank", cost: 15, img: "characters/home_run_hank.png" },
-    { id: 106, name: "Rookie Rocket", cost: 10, img: "characters/rookie_rocket.png" },
-    { id: 107, name: "Bat Whisperer", cost: 10, img: "characters/bat_whisperer.png" },
-    { id: 108, name: "Triple Threat Timmy", cost: 15, img: "characters/triple_threat_timmy.png" },
-    { id: 109, name: "Dugout Doug", cost: 5, img: "characters/dugout_doug.png" },
-    { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" },
+    { id: 101, name: "Little Slugger", cost: 5, img: "collect/characters/slugger.png" },
+    { id: 102, name: "Strikeout King", cost: 10, img: "collect/characters/strikeout_king.png" },
+    { id: 103, name: "Fastball Fred", cost: 5, img: "collect/characters/fastball_fred.png" },
+    { id: 104, name: "Curveball Carl", cost: 5, img: "collect/characters/curveball_carl.png" },
+    { id: 105, name: "Home Run Hank", cost: 15, img: "collect/characters/home_run_hank.png" },
+    { id: 106, name: "Rookie Rocket", cost: 10, img: "collect/characters/rookie_rocket.png" },
+    { id: 107, name: "Bat Whisperer", cost: 10, img: "collect/characters/bat_whisperer.png" },
+    { id: 108, name: "Triple Threat Timmy", cost: 15, img: "collect/characters/triple_threat_timmy.png" },
+    { id: 109, name: "Dugout Duo", cost: 5, img: "collect/characters/dugout_duo.png" },
+    { id: 110, name: "Night Swinger", cost: 10, img: "collect/characters/night_swinger.png" },
 
     // Add 10 more later
 ];
@@ -19,6 +19,7 @@ const characters = [
 let currentUser = null;
 let pendingRedeemId = null;
 let pendingRedeemCost = null;
+
 
 
 // --------------------------------------
