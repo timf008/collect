@@ -11,10 +11,11 @@ const characters = [
     { id: 107, name: "Rock Star", cost: 15, img: "characters/rock_star.png" },
     { id: 108, name: "Triple Threat Timmy", cost: 15, img: "characters/triple_threat_timmy.png" },
     { id: 109, name: "Dugout Duo", cost: 5, img: "characters/dugout_duo.png" },
-    { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" }
-    { id: 111, name: "Luna Ballpark", cost: 10, img: "characters/luna_ballpark.png" }
+    { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" },
+    { id: 111, name: "Luna Ballpark", cost: 10, img: "characters/luna_ballpark.png" },
     { id: 112, name: "Pyramid Park", cost: 5, img: "characters/pyramid_park.png" }
 ];
+
 
 let currentUser = null;
 let pendingRedeemId = null;
