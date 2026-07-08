@@ -6,12 +6,16 @@ const characters = [
     { id: 102, name: "Strikeout King", cost: 10, img: "characters/strikeout_king.png" },
     { id: 103, name: "Fastball Fred", cost: 5, img: "characters/fastball_fred.png" },
     { id: 104, name: "Curveball Carl", cost: 5, img: "characters/curveball_carl.png" },
-    { id: 105, name: "Home Run Hank", cost: 15, img: "characters/home_run_hank.png" },
+    { id: 105, name: "Home Run Hank", cost: 10, img: "characters/home_run_hank.png" },
     { id: 106, name: "Rookie Rocket", cost: 10, img: "characters/rookie_rocket.png" },
-    { id: 107, name: "Rock Star", cost: 10, img: "characters/rock_star.png" },
+    { id: 107, name: "Rock Star", cost: 15, img: "characters/rock_star.png" },
     { id: 108, name: "Triple Threat Timmy", cost: 15, img: "characters/triple_threat_timmy.png" },
     { id: 109, name: "Dugout Duo", cost: 5, img: "characters/dugout_duo.png" },
     { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" }
+    { id: 111, name: "Luna Ballpark", cost: 10, img:
+"characters/luna_ballpark.png" }
+    { id: 112, name: "Pyramid Park", cost: 5, img:
+"characters/pyramid_park.png" }
 ];
 
 let currentUser = null;
