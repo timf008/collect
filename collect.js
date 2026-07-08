@@ -8,7 +8,7 @@ const characters = [
     { id: 104, name: "Curveball Carl", cost: 5, img: "characters/curveball_carl.png" },
     { id: 105, name: "Home Run Hank", cost: 15, img: "characters/home_run_hank.png" },
     { id: 106, name: "Rookie Rocket", cost: 10, img: "characters/rookie_rocket.png" },
-    { id: 107, name: "Bat Whisperer", cost: 10, img: "characters/bat_whisperer.png" },
+    { id: 107, name: "Rock Star", cost: 10, img: "characters/rock_star.png" },
     { id: 108, name: "Triple Threat Timmy", cost: 15, img: "characters/triple_threat_timmy.png" },
     { id: 109, name: "Dugout Duo", cost: 5, img: "characters/dugout_duo.png" },
     { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" }
