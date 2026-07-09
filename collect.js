@@ -12,8 +12,16 @@ const characters = [
     { id: 108, name: "Triple Threat Timmy", cost: 15, img: "characters/triple_threat_timmy.png" },
     { id: 109, name: "Dugout Duo", cost: 5, img: "characters/dugout_duo.png" },
     { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" },
-    { id: 111, name: "Luna Ballpark", cost: 10, img: "characters/luna_ballpark.png" },
-    { id: 112, name: "Pyramid Park", cost: 5, img: "characters/pyramid_park.png" }
+    { id: 111, name: "Luna Ballpark", cost: 15, img: "characters/luna_ballpark.png" },
+    { id: 112, name: "Pyramid Park", cost: 10, img: "characters/pyramid_park.png" },
+    { id: 113, name: "Seaside Stadium", cost: 5, img: "characters/seaside_stadium.png" },
+    { id: 114, name: "Skyline Field", cost: 5, img: "characters/skyline_field.png" },
+    { id: 115, name: "Cruise Ship Complex", cost: 10, img: "characters/cruise_ship_complex.png" },
+    { id: 116, name: "Polar Park", cost: 10, img: "characters/polar_park.png" },
+    { id: 117, name: "Cactus Coliseum", cost: 10, img: "characters/cactus_coliseum.png" },
+    { id: 118, name: "Great Lakes Gardens", cost: 15, img: "characters/great_lakes_gardens.png" },
+    { id: 119, name: "Rocky Mountain Field", cost: 5, img: "characters/rocky_mountain_field.png" },
+    { id: 120, name: "Bayside Ballpark", cost: 5, img: "characters/bayside_ballpark.png" },
 ];
 
 
