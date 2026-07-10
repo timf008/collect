@@ -64,10 +64,10 @@ const badge = getCollectorBadge(currentUser.collectibles.length);
 // Collector Badges
 // --------------------------------------
 function getCollectorBadge(count) {
-    if (count >= 15) return "Pro Collector";
-    if (count >= 10) return "Amateur Collector";
-    if (count >= 5) return "Rookie Collector";
-    return "Prospect Collector";
+    if (count >= 15) return "Pro";
+    if (count >= 10) return "Amateur";
+    if (count >= 5) return "Rookie";
+    return "Prospect";
 }
 
 
