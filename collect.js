@@ -54,7 +54,7 @@ async function loadUser() {
     document.getElementById("userCode").textContent = "User Code: " + userId;
 
 const badge = getCollectorBadge(currentUser.collectibles.length);
-    document.getElementById("collectorBadge").textContent = "Badge: " + badge;
+    document.getElementById("collectorBadge").textContent = "Level: " + badge;
 
     buildCharacterGrid();
     buildStadiumGrid();
