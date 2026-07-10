@@ -50,7 +50,7 @@ async function loadUser() {
 
     currentUser = await res.json();
 
-    document.getElementById("tokenBalance").textContent = "Tokens: " + currentUser.tokens;
+    document.getElementById("tokenBalance").textContent = "Tokens:🪙 " + currentUser.tokens;
     document.getElementById("userCode").textContent = "User Code: " + userId;
 
 const badge = getCollectorBadge(currentUser.collectibles.length);
@@ -89,7 +89,7 @@ function buildCharacterGrid() {
         card.innerHTML = `
             <img src="${char.img}">
             <h3>${char.name}</h3>
-            <p>Cost: ${char.cost} Tokens</p>
+            <p>Cost: ${char.cost} 🪙</p>
             ${owned ? "" : `<button onclick="openModal(${char.id}, ${char.cost}, '${char.name}')">Redeem</button>`}
         `;
 
