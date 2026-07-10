@@ -70,6 +70,19 @@ body {
 }
 
 /* ------------------------------
+   Section Title
+------------------------------ */
+
+.section-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* ------------------------------
    Redeem Button
 ------------------------------ */
 .card button {
