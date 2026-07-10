@@ -12,17 +12,21 @@ const characters = [
     { id: 108, name: "Triple Threat Timmy", cost: 15, img: "characters/triple_threat_timmy.png" },
     { id: 109, name: "Dugout Duo", cost: 5, img: "characters/dugout_duo.png" },
     { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" },
-    { id: 111, name: "Luna Ballpark", cost: 15, img: "characters/luna_ballpark.png" },
-    { id: 112, name: "Pyramid Park", cost: 10, img: "characters/pyramid_park.png" },
-    { id: 113, name: "Seaside Stadium", cost: 5, img: "characters/seaside_stadium.png" },
-    { id: 114, name: "Skyline Field", cost: 5, img: "characters/skyline_field.png" },
-    { id: 115, name: "Cruise Ship Complex", cost: 10, img: "characters/cruise_ship_complex.png" },
-    { id: 116, name: "Polar Park", cost: 10, img: "characters/polar_park.png" },
-    { id: 117, name: "Cactus Coliseum", cost: 10, img: "characters/cactus_coliseum.png" },
-    { id: 118, name: "Great Lakes Gardens", cost: 15, img: "characters/great_lakes_gardens.png" },
-    { id: 119, name: "Rocky Mountain Field", cost: 5, img: "characters/rocky_mountain_field.png" },
-    { id: 120, name: "Bayside Ballpark", cost: 5, img: "characters/bayside_ballpark.png" },
 ];
+
+const stadiums = [
+    { id: 111, name: "Luna Ballpark", cost: 15, img: "stadiums/luna_ballpark.png" },
+    { id: 112, name: "Pyramid Park", cost: 10, img: "stadiums/pyramid_park.png" },
+    { id: 113, name: "Seaside Stadium", cost: 5, img: "stadiums/seaside_stadium.png" },
+    { id: 114, name: "Skyline Field", cost: 5, img: "stadiums/skyline_field.png" },
+    { id: 115, name: "Cruise Ship Complex", cost: 10, img: "stadiums/cruise_ship_complex.png" },
+    { id: 116, name: "Polar Park", cost: 10, img: "stadiums/polar_park.png" },
+    { id: 117, name: "Cactus Coliseum", cost: 10, img: "stadiums/cactus_coliseum.png" },
+    { id: 118, name: "Great Lakes Gardens", cost: 15, img: "stadiums/great_lakes_gardens.png" },
+    { id: 119, name: "Rocky Mountain Field", cost: 5, img: "stadiums/rocky_mountain_field.png" },
+    { id: 120, name: "Bayside Ballpark", cost: 5, img: "stadiums/bayside_ballpark.png" },
+];
+
 
 
 let currentUser = null;
@@ -50,6 +54,7 @@ async function loadUser() {
     document.getElementById("userCode").textContent = "User Code: " + userId;
 
     buildCharacterGrid();
+    buildStadiumGrid();
 }
 
 // --------------------------------------
@@ -76,6 +81,33 @@ function buildCharacterGrid() {
         grid.appendChild(card);
     });
 }
+
+// --------------------------------------
+// Build Stadium Grid
+// --------------------------------------
+function buildStadiumGrid() {
+    const grid = document.getElementById("stadiumGrid");
+    grid.innerHTML = "";
+
+    stadiums.forEach(stadium => {
+        const owned = currentUser.collectibles.includes(stadium.id);
+
+        const card = document.createElement("div");
+        card.className = "card";
+        if (owned) card.classList.add("owned");
+
+        card.innerHTML = `
+            <img src="${stadium.img}">
+            <h3>${stadium.name}</h3>
+            <p>Cost: ${stadium.cost} Tokens</p>
+            ${owned ? "" : `<button onclick="openModal(${stadium.id}, ${stadium.cost}, '${stadium.name}')">Redeem</button>`}
+        `;
+
+        grid.appendChild(card);
+    });
+}
+
+
 
 // --------------------------------------
 // Open Redeem Modal
