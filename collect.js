@@ -53,9 +53,24 @@ async function loadUser() {
     document.getElementById("tokenBalance").textContent = "Tokens: " + currentUser.tokens;
     document.getElementById("userCode").textContent = "User Code: " + userId;
 
+const badge = getCollectorBadge(currentUser.collectibles.length);
+    document.getElementById("collectorBadge").textContent = "Badge: " + badge;
+
     buildCharacterGrid();
     buildStadiumGrid();
 }
+
+// --------------------------------------
+// Collector Badges
+// --------------------------------------
+function getCollectorBadge(count) {
+    if (count >= 15) return "Pro Collector";
+    if (count >= 10) return "Amateur Collector";
+    if (count >= 5) return "Rookie Collector";
+    return "Prospect Collector";
+}
+
+
 
 // --------------------------------------
 // Build Character Grid
