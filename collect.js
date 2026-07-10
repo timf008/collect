@@ -50,7 +50,8 @@ async function loadUser() {
 
     currentUser = await res.json();
 
-    document.getElementById("tokenBalance").textContent = "Tokens 🪙: " + currentUser.tokens;
+    document.getElementById("tokenBalance").textContent = `Tokens: 🪙${currentUser.tokens}`;
+
     document.getElementById("userCode").textContent = "User Code: " + userId;
 
 const badge = getCollectorBadge(currentUser.collectibles.length);
