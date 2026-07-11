@@ -72,16 +72,29 @@ function getCollectorBadge(count) {
 }
 
 // --------------------------------------
+// Weekly Challenge Stat Labels
+// --------------------------------------
+const statLabels = {
+    BA: "Batting Average",
+    OBP: "On Base Percentage",
+    SLG: "Slugging Percentage",
+    Kpct: "Strikeout Percentage",
+    BBpct: "Walk Percentage"
+};
+
+// --------------------------------------
 // Load Weekly Challenge
 // --------------------------------------
 async function loadWeeklyChallenge() {
     const res = await fetch(`${API}/getWeeklyChallenge`);
     const wc = await res.json();
 
-    document.getElementById("weeklyText").textContent =
-        `Find ${wc.player}'s ${wc.season} ${wc.stat} in the Batter Analyzer.`;
-}
+    // Build readable text
+    const readableStat = statLabels[wc.stat] || wc.stat;
 
+    document.getElementById("weeklyText").textContent =
+        `Find ${wc.player}'s ${wc.season} ${readableStat} in the Batter Analyzer.`;
+}
 
 // --------------------------------------
 // Submit Hunt
@@ -99,8 +112,9 @@ async function submitHunt() {
     const data = await res.json();
     document.getElementById("huntResult").textContent = data.message;
 
-    if (data.ok) loadUser();
+    if (data.ok) loadUser(); // refresh tokens
 }
+
 
 
 // --------------------------------------
