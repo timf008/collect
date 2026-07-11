@@ -116,6 +116,73 @@ body {
 }
 
 /* ------------------------------
+   Weekly Challenge Section
+------------------------------ */
+/* Weekly Challenge Box */
+.weekly-hunt {
+    background: #f7f9fc;
+    border: 1px solid #d0d7e2;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    max-width: 420px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Title */
+.weekly-hunt h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2a3b5f;
+}
+
+/* Challenge Text */
+#weeklyText {
+    font-size: 15px;
+    color: #3a4a63;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+/* Input */
+#huntAnswer {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #c7ced9;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+/* Submit Button */
+.weekly-hunt button {
+    background: #2a6ef2;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.weekly-hunt button:hover {
+    background: #1f56c7;
+}
+
+/* Result Message */
+#huntResult {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2a3b5f;
+}
+
+
+/* ------------------------------
    Modal
 ------------------------------ */
 .modal {
