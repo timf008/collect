@@ -71,6 +71,7 @@ const badge = getCollectorBadge(currentUser.collectibles.length);
 
     buildCharacterGrid();
     buildStadiumGrid();
+    buildBusGrid();
 }
 
 // --------------------------------------
