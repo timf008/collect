@@ -125,7 +125,7 @@ body {
     border-radius: 10px;
     padding: 20px;
     margin-top: 25px;
-    max-width: 420px;
+    max-width: 480px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
@@ -146,14 +146,20 @@ body {
     line-height: 1.4;
 }
 
+/* Row layout for input + button + result */
+.hunt-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 /* Input */
 #huntAnswer {
-    width: 100%;
+    flex: 1;
     padding: 10px;
     font-size: 15px;
     border: 1px solid #c7ced9;
     border-radius: 6px;
-    margin-bottom: 12px;
     box-sizing: border-box;
 }
 
@@ -167,6 +173,7 @@ body {
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s ease;
+    white-space: nowrap;
 }
 
 .weekly-hunt button:hover {
@@ -175,11 +182,12 @@ body {
 
 /* Result Message */
 #huntResult {
-    margin-top: 12px;
+    min-width: 120px;
     font-size: 15px;
     font-weight: 600;
     color: #2a3b5f;
 }
+
 
 
 /* ------------------------------
