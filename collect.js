@@ -27,6 +27,18 @@ const stadiums = [
     { id: 120, name: "Bayside Ballpark", cost: 5, img: "stadiums/bayside_ballpark.png" },
 ];
 
+const buses = [
+{ id: 121, name: "Bayside Bus", cost: 5, img: "buses/bayside_bus.png" },
+{ id: 122, name: "Cactus Bus", cost: 5, img: "buses/cactus_bus.png" },
+{ id: 123, name: "Cruise Ship Bus", cost: 5, img: "buses/cruise_ship_bus.png" },
+{ id: 124, name: "Great Lakes Bus", cost: 5, img: "buses/great_lakes_bus.png" },
+{ id: 125, name: "Luna Bus", cost: 5, img: "buses/luna_bus.png" },
+{ id: 126, name: "Polar Bus", cost: 5, img: "buses/polar_bus.png" },
+{ id: 127, name: "Pyramid Bus", cost: 5, img: "buses/pyramid_bus.png" },
+{ id: 128, name: "Rocky Mountain Bus", cost: 5, img: "buses/rocky_mountain_bus.png" },
+{ id: 129, name: "Seaside Bus", cost: 5, img: "buses/seaside_bus.png" },
+{ id: 130, name: "Skyline Bus", cost: 5, img: "buses/skyline_bus.png" },
+];
 
 
 let currentUser = null;
@@ -167,6 +179,30 @@ function buildStadiumGrid() {
     });
 }
 
+// --------------------------------------
+// Build Bus Grid
+// --------------------------------------
+function buildBusGrid() {
+    const grid = document.getElementById("busGrid");
+    grid.innerHTML = "";
+
+    buses.forEach(bus => {
+        const owned = currentUser.collectibles.includes(bus.id);
+
+        const card = document.createElement("div");
+        card.className = "card";
+        if (owned) card.classList.add("owned");
+
+        card.innerHTML = `
+            <img src="${bus.img}">
+            <h3>${bus.name}</h3>
+            <p>Cost: 🪙${bus.cost}</p>
+            ${owned ? "" : `<button onclick="openModal(${bus.id}, ${bus.cost}, '${bus.name}')">Redeem</button>`}
+        `;
+
+        grid.appendChild(card);
+    });
+}
 
 
 // --------------------------------------
