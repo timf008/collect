@@ -71,6 +71,36 @@ function getCollectorBadge(count) {
     return "Prospect";
 }
 
+// --------------------------------------
+// Load Weekly Challenge
+// --------------------------------------
+async function loadWeeklyChallenge() {
+    const res = await fetch(`${API}/getWeeklyChallenge`);
+    const wc = await res.json();
+
+    document.getElementById("weeklyText").textContent =
+        `Find ${wc.player}'s ${wc.season} ${wc.stat} in the Batter Analyzer.`;
+}
+
+
+// --------------------------------------
+// Submit Hunt
+// --------------------------------------
+async function submitHunt() {
+    const answer = document.getElementById("huntAnswer").value;
+    const userId = localStorage.getItem("userCode");
+
+    const res = await fetch(`${API}/weeklyHunt`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, answer })
+    });
+
+    const data = await res.json();
+    document.getElementById("huntResult").textContent = data.message;
+
+    if (data.ok) loadUser();
+}
 
 
 // --------------------------------------
@@ -175,3 +205,4 @@ document.getElementById("confirmRedeem").addEventListener("click", async () => {
 // Init
 // --------------------------------------
 loadUser();
+loadWeeklyChallenge();
