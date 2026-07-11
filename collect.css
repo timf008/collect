@@ -155,13 +155,14 @@ body {
 
 /* Input */
 #huntAnswer {
-    flex: 1;
+    width: 120px;
     padding: 10px;
     font-size: 15px;
     border: 1px solid #c7ced9;
     border-radius: 6px;
     box-sizing: border-box;
 }
+
 
 /* Submit Button */
 .weekly-hunt button {
