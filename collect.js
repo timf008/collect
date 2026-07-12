@@ -72,6 +72,7 @@ const badge = getCollectorBadge(currentUser.collectibles.length);
     buildCharacterGrid();
     buildStadiumGrid();
     buildBusGrid();
+    buildLevelMeter(currentUser.level);
 }
 
 // --------------------------------------
@@ -83,6 +84,22 @@ function getCollectorBadge(count) {
     if (count >= 5) return "Rookie";
     return "Prospect";
 }
+
+// --------------------------------------
+// Level Battery Meter
+// --------------------------------------
+function buildLevelMeter(level) {
+    const meter = document.getElementById("levelMeter");
+    meter.innerHTML = "";
+
+    for (let i = 1; i <= 5; i++) {
+        const seg = document.createElement("div");
+        seg.className = "level-segment";
+        if (level >= i) seg.classList.add("filled");
+        meter.appendChild(seg);
+    }
+}
+
 
 // --------------------------------------
 // Weekly Challenge Stat Labels
