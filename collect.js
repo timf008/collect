@@ -76,7 +76,6 @@ buildLevelMeter(levelNumber);
     buildCharacterGrid();
     buildStadiumGrid();
     buildBusGrid();
-    buildLevelMeter(currentUser.level);
 }
 
 // --------------------------------------
