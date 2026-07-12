@@ -100,6 +100,7 @@ document.getElementById("collectorBadge").textContent = "Level: " + badge;
 const levelNumber = badgeToLevel(badge);
 buildLevelMeter(levelNumber);
 
+    checkMysteryUnlocks();
 
     buildCharacterGrid();
     buildStadiumGrid();
@@ -212,6 +213,44 @@ function buildMysteryGrid() {
         grid.appendChild(card);
     });
 }
+
+// --------------------------------------
+// Mystery Unlock Logic
+// --------------------------------------
+function checkMysteryUnlocks() {
+    const unlocked = currentUser.mystery || [];
+
+    const charCount = currentUser.collectibles.filter(id => id >= 1 && id <= 100).length;
+    const stadiumCount = currentUser.collectibles.filter(id => id >= 101 && id <= 120).length;
+    const busCount = currentUser.collectibles.filter(id => id >= 121 && id <= 130).length;
+
+    const fullCharacters = charCount === 10;   // adjust if needed
+    const fullStadiums = stadiumCount === 10;
+    const fullBuses = busCount === 10;
+
+    // Unlock Slugger Chew (200)
+    if (charCount >= 5 && !unlocked.includes(200)) {
+        unlocked.push(200);
+    }
+
+    // Unlock Slugger Juice (201)
+    if (busCount >= 5 && !unlocked.includes(201)) {
+        unlocked.push(201);
+    }
+
+    // Unlock Slugger Seeds (202)
+    if (stadiumCount >= 5 && !unlocked.includes(202)) {
+        unlocked.push(202);
+    }
+
+    // Unlock Slugger Spray (203)
+    if ((fullCharacters || fullStadiums || fullBuses) && !unlocked.includes(203)) {
+        unlocked.push(203);
+    }
+
+    currentUser.mystery = unlocked;
+}
+
 
 
 // --------------------------------------
