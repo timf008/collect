@@ -40,6 +40,34 @@ const buses = [
 { id: 130, name: "Skyline Bus", cost: 5, img: "buses/skyline_bus.png" },
 ];
 
+const mystery = [
+    {
+        id: 200,
+        name: "Slugger Chew",
+        img: "mystery/mystery_item.png",      // shown until unlocked
+        unlockedImg: "mystery/slugger_chew.png"
+    },
+    {
+        id: 201,
+        name: "Slugger Juice",
+        img: "mystery/mystery_item.png",
+        unlockedImg: "mystery/slugger_juice.png"
+    },
+    {
+        id: 202,
+        name: "Slugger Seeds",
+        img: "mystery/mystery_item.png",
+        unlockedImg: "mystery/slugger_seeds.png"
+    },
+    {
+        id: 203,
+        name: "Slugger Spray",
+        img: "mystery/mystery_item.png",
+        unlockedImg: "mystery/slugger_spray.png"
+    }
+];
+
+
 
 let currentUser = null;
 let pendingRedeemId = null;
@@ -76,6 +104,7 @@ buildLevelMeter(levelNumber);
     buildCharacterGrid();
     buildStadiumGrid();
     buildBusGrid();
+    buildMysteryGrid();
 }
 
 // --------------------------------------
@@ -161,6 +190,28 @@ async function submitHunt() {
     if (data.ok) loadUser(); // refresh tokens
 }
 
+// --------------------------------------
+// Build Mystery Grid
+// --------------------------------------
+function buildMysteryGrid() {
+    const grid = document.getElementById("mysteryGrid");
+    grid.innerHTML = "";
+
+    mystery.forEach(item => {
+        const unlocked = currentUser.mystery?.includes(item.id);
+
+        const card = document.createElement("div");
+        card.className = "mystery-card";
+        card.classList.add(unlocked ? "unlocked" : "locked");
+
+        card.innerHTML = `
+            <img src="${unlocked ? item.unlockedImg : item.img}">
+            <h4>${item.name}</h4>
+        `;
+
+        grid.appendChild(card);
+    });
+}
 
 
 // --------------------------------------
