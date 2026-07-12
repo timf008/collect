@@ -226,9 +226,9 @@ body {
 }
 
 /* ------------------------------
-   Special Items Section
+   Mystery Items Section
 ------------------------------ */
-.special-items {
+.mystery-items {
     background: #f7f9fc;
     border: 1px solid #d0d7e2;
     border-radius: 10px;
@@ -239,7 +239,7 @@ body {
 }
 
 /* Title */
-.special-items h3 {
+.mystery-items h3 {
     margin-top: 0;
     margin-bottom: 12px;
     font-size: 20px;
@@ -247,15 +247,15 @@ body {
     color: #2a3b5f;
 }
 
-/* Grid layout for the 4 special items */
-#specialGrid {
+/* Grid layout for the 4 mystery items */
+#mysteryGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
-/* Each special item card */
-.special-card {
+/* Each mystery item card */
+.mystery-card {
     background: #ffffff;
     border: 1px solid #d0d7e2;
     border-radius: 8px;
@@ -265,7 +265,7 @@ body {
 }
 
 /* Mystery image placeholder */
-.special-card img {
+.mystery-card img {
     width: 80px;
     height: 80px;
     object-fit: contain;
@@ -273,30 +273,30 @@ body {
 }
 
 /* Item name */
-.special-card h4 {
+.mystery-card h4 {
     margin-top: 10px;
     font-size: 16px;
     color: #2a3b5f;
 }
 
 /* Locked state */
-.special-card.locked {
+.mystery-card.locked {
     filter: grayscale(100%);
     opacity: 0.7;
 }
 
 /* Unlocked state */
-.special-card.unlocked img {
+.mystery-card.unlocked img {
     opacity: 1;
 }
 
-.special-card.unlocked {
+.mystery-card.unlocked {
     border-color: #2a6ef2;
     box-shadow: 0 0 6px rgba(42,110,242,0.4);
 }
 
-/* Layout wrapper for Weekly Challenge + Special Items */
-.challenge-special-wrapper {
+/* Layout wrapper for Weekly Challenge + Mystery Items */
+.challenge-mystery-wrapper {
     display: flex;
     gap: 25px;
     margin-top: 25px;
@@ -305,9 +305,10 @@ body {
 
 /* Ensure both boxes stay the same width */
 .weekly-hunt,
-.special-items {
+.mystery-items {
     width: 480px;
 }
+
 
 
 
