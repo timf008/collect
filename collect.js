@@ -91,25 +91,30 @@ async function loadUser() {
     currentUser = await res.json();
 
     document.getElementById("tokenBalance").textContent = `Tokens: 🪙${currentUser.tokens}`;
-
     document.getElementById("userCode").textContent = "User Code: " + userId;
 
-const badge = getCollectorBadge(currentUser.collectibles.length);
-document.getElementById("collectorBadge").textContent = "Level: " + badge;
+    const badge = getCollectorBadge(currentUser.collectibles.length);
+    document.getElementById("collectorBadge").textContent = "Level: " + badge;
 
-const levelNumber = badgeToLevel(badge);
-buildLevelMeter(levelNumber);
-console.trace("Mystery unlock logic fired");
-console.log("Mystery unlock fired. currentUser:", JSON.stringify(currentUser));
+    const levelNumber = badgeToLevel(badge);
+    buildLevelMeter(levelNumber);
 
-
+    // Run unlock logic
     checkMysteryUnlocks();
+
+    // ⭐ Save updated mystery unlocks to backend
+    await fetch(`${API}/saveUser`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(currentUser)
+    });
 
     buildCharacterGrid();
     buildStadiumGrid();
     buildBusGrid();
     buildMysteryGrid();
 }
+
 
 // --------------------------------------
 // Collector Badges
