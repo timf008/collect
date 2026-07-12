@@ -89,6 +89,7 @@ async function loadUser() {
     });
 
     currentUser = await res.json();
+    currentUser.userId = userId;   // ⭐ REQUIRED FIX
 
     document.getElementById("tokenBalance").textContent = `Tokens: 🪙${currentUser.tokens}`;
     document.getElementById("userCode").textContent = "User Code: " + userId;
@@ -99,10 +100,8 @@ async function loadUser() {
     const levelNumber = badgeToLevel(badge);
     buildLevelMeter(levelNumber);
 
-    // Run unlock logic
     checkMysteryUnlocks();
 
-    // ⭐ Save updated mystery unlocks to backend
     await fetch(`${API}/saveUser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -114,6 +113,7 @@ async function loadUser() {
     buildBusGrid();
     buildMysteryGrid();
 }
+
 
 
 // --------------------------------------
