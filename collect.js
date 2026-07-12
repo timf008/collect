@@ -206,7 +206,7 @@ function buildMysteryGrid() {
 
         card.innerHTML = `
             <img src="${unlocked ? item.unlockedImg : item.img}">
-            <h4>${item.name}</h4>
+            ${unlocked ? `<h4>${item.name}</h4>` : ""}
         `;
 
         grid.appendChild(card);
