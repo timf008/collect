@@ -231,24 +231,32 @@ function checkMysteryUnlocks() {
     // Unlock Slugger Chew (200)
     if (charCount >= 5 && !unlocked.includes(200)) {
         unlocked.push(200);
+        mysteryUnlockedPrompt("Slugger Chew");
     }
 
     // Unlock Slugger Juice (201)
     if (busCount >= 5 && !unlocked.includes(201)) {
         unlocked.push(201);
+        mysteryUnlockedPrompt("Slugger Juice");
     }
 
     // Unlock Slugger Seeds (202)
     if (stadiumCount >= 5 && !unlocked.includes(202)) {
         unlocked.push(202);
+        mysteryUnlockedPrompt("Slugger Seeds");
     }
 
     // Unlock Slugger Spray (203)
     if ((fullCharacters || fullStadiums || fullBuses) && !unlocked.includes(203)) {
         unlocked.push(203);
+        mysteryUnlockedPrompt("Slugger Spray");
     }
 
     currentUser.mystery = unlocked;
+}
+
+function mysteryUnlockedPrompt(name) {
+    alert(`Mystery Item Unlocked!\n${name}`);
 }
 
 
