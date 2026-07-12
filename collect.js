@@ -67,7 +67,11 @@ async function loadUser() {
     document.getElementById("userCode").textContent = "User Code: " + userId;
 
 const badge = getCollectorBadge(currentUser.collectibles.length);
-    document.getElementById("collectorBadge").textContent = "Level: " + badge;
+document.getElementById("collectorBadge").textContent = "Level: " + badge;
+
+const levelNumber = badgeToLevel(badge);
+buildLevelMeter(levelNumber);
+
 
     buildCharacterGrid();
     buildStadiumGrid();
@@ -83,6 +87,16 @@ function getCollectorBadge(count) {
     if (count >= 10) return "Amateur";
     if (count >= 5) return "Rookie";
     return "Prospect";
+}
+
+function badgeToLevel(badge) {
+    switch (badge) {
+        case "Prospect": return 1;
+        case "Rookie": return 2;
+        case "Amateur": return 3;
+        case "Pro": return 4;
+        default: return 1;
+    }
 }
 
 // --------------------------------------
