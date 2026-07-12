@@ -29,12 +29,12 @@ const stadiums = [
 
 const buses = [
 { id: 121, name: "Bayside Bus", cost: 5, img: "buses/bayside_bus.png" },
-{ id: 122, name: "Cactus Bus", cost: 5, img: "buses/cactus_bus.png" },
-{ id: 123, name: "Cruise Ship Bus", cost: 5, img: "buses/cruise_ship_bus.png" },
-{ id: 124, name: "Great Lakes Bus", cost: 5, img: "buses/great_lakes_bus.png" },
-{ id: 125, name: "Luna Bus", cost: 5, img: "buses/luna_bus.png" },
-{ id: 126, name: "Polar Bus", cost: 5, img: "buses/polar_bus.png" },
-{ id: 127, name: "Pyramid Bus", cost: 5, img: "buses/pyramid_bus.png" },
+{ id: 122, name: "Cactus Bus", cost: 10, img: "buses/cactus_bus.png" },
+{ id: 123, name: "Cruise Ship Bus", cost: 10, img: "buses/cruise_ship_bus.png" },
+{ id: 124, name: "Great Lakes Bus", cost: 15, img: "buses/great_lakes_bus.png" },
+{ id: 125, name: "Luna Bus", cost: 15, img: "buses/luna_bus.png" },
+{ id: 126, name: "Polar Bus", cost: 10, img: "buses/polar_bus.png" },
+{ id: 127, name: "Pyramid Bus", cost: 10, img: "buses/pyramid_bus.png" },
 { id: 128, name: "Rocky Mountain Bus", cost: 5, img: "buses/rocky_mountain_bus.png" },
 { id: 129, name: "Seaside Bus", cost: 5, img: "buses/seaside_bus.png" },
 { id: 130, name: "Skyline Bus", cost: 5, img: "buses/skyline_bus.png" },
