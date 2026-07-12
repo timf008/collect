@@ -39,6 +39,26 @@ body {
     align-items: center;
 }
 
+/* ------------------------------
+   Level Battery Meter
+------------------------------ */
+/* Level Battery Meter */
+.level-meter {
+    display: flex;
+    gap: 4px;
+}
+
+.level-segment {
+    width: 18px;
+    height: 10px;
+    background: #555;
+    border-radius: 3px;
+}
+
+.level-segment.filled {
+    background: #2a6ef2;
+}
+
 
 /* ------------------------------
    Character Grid
