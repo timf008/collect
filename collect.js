@@ -82,6 +82,7 @@ buildLevelMeter(levelNumber);
 // Collector Badges
 // --------------------------------------
 function getCollectorBadge(count) {
+    if (count >= 20) return "Hall of Fame";
     if (count >= 15) return "Pro";
     if (count >= 10) return "Amateur";
     if (count >= 5) return "Rookie";
@@ -94,9 +95,11 @@ function badgeToLevel(badge) {
         case "Rookie": return 2;
         case "Amateur": return 3;
         case "Pro": return 4;
+        case "Hall of Fame": return 5;
         default: return 1;
     }
 }
+
 
 // --------------------------------------
 // Level Battery Meter
