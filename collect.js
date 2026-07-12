@@ -220,11 +220,11 @@ function buildMysteryGrid() {
 function checkMysteryUnlocks() {
     const unlocked = currentUser.mystery || [];
 
-    const charCount = currentUser.collectibles.filter(id => id >= 1 && id <= 100).length;
-    const stadiumCount = currentUser.collectibles.filter(id => id >= 101 && id <= 120).length;
+    const charCount = currentUser.collectibles.filter(id => id >= 101 && id <= 110).length;
+    const stadiumCount = currentUser.collectibles.filter(id => id >= 111 && id <= 120).length;
     const busCount = currentUser.collectibles.filter(id => id >= 121 && id <= 130).length;
 
-    const fullCharacters = charCount === 10;   // adjust if needed
+    const fullCharacters = charCount === 10;
     const fullStadiums = stadiumCount === 10;
     const fullBuses = busCount === 10;
 
