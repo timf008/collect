@@ -255,6 +255,7 @@ function checkMysteryUnlocks() {
     currentUser.mystery = unlocked;
 }
 
+
 function mysteryUnlockedPrompt(name) {
     alert(`Mystery Item Unlocked!\n${name}`);
 }
