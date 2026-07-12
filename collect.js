@@ -100,6 +100,8 @@ document.getElementById("collectorBadge").textContent = "Level: " + badge;
 const levelNumber = badgeToLevel(badge);
 buildLevelMeter(levelNumber);
 console.trace("Mystery unlock logic fired");
+console.log("Mystery unlock fired. currentUser:", JSON.stringify(currentUser));
+
 
     checkMysteryUnlocks();
 
