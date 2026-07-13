@@ -338,9 +338,12 @@ body {
   animation: popIn 0.25s ease-out;
 }
 
+/* ⭐ FIXED: Image keeps natural aspect ratio */
 .mystery-image {
-  width: 120px;
-  height: 120px;
+  width: 120px;        /* You can adjust this */
+  height: auto;        /* <-- prevents squishing */
+  object-fit: contain; /* <-- keeps full image visible */
+  display: block;
   margin: 10px auto;
 }
 
@@ -359,6 +362,26 @@ body {
   to { transform: scale(1); opacity: 1; }
 }
 
+
+/* ------------------------------
+   Mystery Modal Button
+------------------------------ */
+/* Mystery Modal Button */
+.mystery-content button {
+    margin-top: 15px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #0077ff;   /* same as confirmRedeem */
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.mystery-content button:hover {
+    background: #005fcc;   /* same hover color */
+}
 
 
 
