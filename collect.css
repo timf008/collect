@@ -314,14 +314,6 @@ body {
     box-shadow: 0 0 6px rgba(42,110,242,0.4);
 }
 
-/* Layout wrapper for Weekly Challenge + Mystery Items */
-.challenge-mystery-wrapper {
-    display: flex;
-    gap: 25px;
-    margin-top: 25px;
-    align-items: flex-start;
-}
-
 /* Ensure both boxes stay the same width */
 .weekly-hunt,
 .mystery-items {
