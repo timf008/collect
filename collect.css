@@ -254,23 +254,26 @@ body {
     gap: 15px;
 }
 
-/* Each mystery item card */
 .mystery-card {
-    background: #ffffff;
-    border: 1px solid #d0d7e2;
-    border-radius: 8px;
-    padding: 12px;
-    text-align: center;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  background: #1a1a1a;
+  border: 2px solid #333;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  height: 180px;        /* <<< FIX: uniform card height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-/* Mystery image placeholder */
 .mystery-card img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    opacity: 0.6; /* looks mysterious until unlocked */
+  width: 100%;
+  height: 120px;        /* <<< FIX: uniform image height */
+  object-fit: contain;  /* <<< prevents distortion */
+  border-radius: 8px;
 }
+
 
 /* Item name */
 .mystery-card h4 {
