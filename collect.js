@@ -223,7 +223,7 @@ function buildMysteryGrid() {
 }
 
 // --------------------------------------
-// Mystery Unlock Logic
+// Mystery Unlock Logic (Patched for Modal)
 // --------------------------------------
 function checkMysteryUnlocks() {
     const unlocked = currentUser.mystery || [];
@@ -239,34 +239,41 @@ function checkMysteryUnlocks() {
     // Unlock Slugger Chew (200)
     if (charCount >= 5 && !unlocked.includes(200)) {
         unlocked.push(200);
-        mysteryUnlockedPrompt("Slugger Chew");
+        mysteryUnlockedPrompt("Slugger Chew", 200);
     }
 
     // Unlock Slugger Juice (201)
     if (busCount >= 5 && !unlocked.includes(201)) {
         unlocked.push(201);
-        mysteryUnlockedPrompt("Slugger Juice");
+        mysteryUnlockedPrompt("Slugger Juice", 201);
     }
 
     // Unlock Slugger Seeds (202)
     if (stadiumCount >= 5 && !unlocked.includes(202)) {
         unlocked.push(202);
-        mysteryUnlockedPrompt("Slugger Seeds");
+        mysteryUnlockedPrompt("Slugger Seeds", 202);
     }
 
     // Unlock Slugger Spray (203)
     if ((fullCharacters || fullStadiums || fullBuses) && !unlocked.includes(203)) {
         unlocked.push(203);
-        mysteryUnlockedPrompt("Slugger Spray");
+        mysteryUnlockedPrompt("Slugger Spray", 203);
     }
 
     currentUser.mystery = unlocked;
 }
 
 
-function mysteryUnlockedPrompt(name) {
-    alert(`Mystery Item Unlocked!\n${name}`);
+// --------------------------------------
+// New Modal-Based Unlock Prompt
+// --------------------------------------
+function mysteryUnlockedPrompt(name, id) {
+    // Replace this with your actual image path
+    const imageUrl = `/images/mystery/${id}.png`;
+
+    showMysteryModal(name, imageUrl);
 }
+
 
 
 
@@ -391,6 +398,25 @@ document.getElementById("confirmRedeem").addEventListener("click", async () => {
         alert(data.reason);
     }
 });
+
+// --------------------------------------
+// Mystery Modal Function
+// --------------------------------------
+function showMysteryModal(name, imageUrl) {
+    document.getElementById("mysteryName").textContent = name;
+    document.getElementById("mysteryImage").src = imageUrl;
+
+    document.getElementById("mysteryModal").classList.remove("hidden");
+}
+
+// --------------------------------------
+// Mystery Modal Close Button
+// --------------------------------------
+function closeMysteryModal() {
+    document.getElementById("mysteryModal").classList.add("hidden");
+}
+
+
 
 // --------------------------------------
 // Init
