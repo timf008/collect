@@ -247,40 +247,53 @@ body {
     color: #2a3b5f;
 }
 
-/* Grid layout for the 4 mystery items */
+/* Responsive grid */
 #mysteryGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 15px;
 }
 
+/* Mystery Card */
 .mystery-card {
-  background: #ffffff;
-  border: 2px solid #333;
-  padding: 12px;
-  border-radius: 10px;
-  text-align: center;
-  height: 120px;        /* <<< FIX: uniform card height */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+    background: #ffffff;
+    border: 2px solid #333;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+
+    /* ⭐ FIX: remove fixed height */
+    min-height: 140px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    /* ⭐ Prevent overflow */
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
+/* Image */
 .mystery-card img {
-    width: 100px;
-    height: 100px;
+    width: 80px;          /* ⭐ slightly smaller for text room */
+    height: auto;         /* ⭐ keeps aspect ratio */
     object-fit: contain;
-    opacity: 0.6; /* looks mysterious until unlocked */
+    opacity: 0.6;
 }
-
-
 
 /* Item name */
 .mystery-card h4 {
-    margin-top: 10px;
-    font-size: 16px;
+    margin-top: 8px;
+    font-size: 15px;
     color: #2a3b5f;
+
+    /* ⭐ Prevent text escaping */
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
 }
 
 /* Locked state */
@@ -299,7 +312,7 @@ body {
     box-shadow: 0 0 6px rgba(42,110,242,0.4);
 }
 
-/* Layout wrapper for Weekly Challenge + Mystery Items */
+/* Layout wrapper */
 .challenge-mystery-wrapper {
     display: flex;
     gap: 25px;
@@ -312,6 +325,7 @@ body {
 .mystery-items {
     width: 480px;
 }
+
 
 /* ------------------------------
    Mystery Unlock Modal
