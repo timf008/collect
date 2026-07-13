@@ -268,8 +268,8 @@ body {
 }
 
 .mystery-card img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     opacity: 0.6; /* looks mysterious until unlocked */
 }
