@@ -247,11 +247,13 @@ body {
     color: #2a3b5f;
 }
 
-/* Responsive grid */
+/* ⭐ Always 2×2 grid */
 #mysteryGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* fixed 2 columns */
     gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Mystery Card */
@@ -262,7 +264,7 @@ body {
     border-radius: 10px;
     text-align: center;
 
-    /* ⭐ FIX: remove fixed height */
+    /* ⭐ Responsive height */
     min-height: 140px;
     height: auto;
 
@@ -278,8 +280,8 @@ body {
 
 /* Image */
 .mystery-card img {
-    width: 80px;          /* ⭐ slightly smaller for text room */
-    height: auto;         /* ⭐ keeps aspect ratio */
+    width: 80px;      /* smaller so text fits */
+    height: auto;     /* natural proportions */
     object-fit: contain;
     opacity: 0.6;
 }
@@ -312,7 +314,7 @@ body {
     box-shadow: 0 0 6px rgba(42,110,242,0.4);
 }
 
-/* Layout wrapper */
+/* Layout wrapper for Weekly Challenge + Mystery Items */
 .challenge-mystery-wrapper {
     display: flex;
     gap: 25px;
@@ -325,6 +327,7 @@ body {
 .mystery-items {
     width: 480px;
 }
+
 
 
 /* ------------------------------
