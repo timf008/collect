@@ -268,11 +268,14 @@ function checkMysteryUnlocks() {
 // New Modal-Based Unlock Prompt
 // --------------------------------------
 function mysteryUnlockedPrompt(name, id) {
-    // Replace this with your actual image path
-    const imageUrl = `/images/mystery/${id}.png`;
+    const item = mystery.find(m => m.id === id);
+
+    // Fallback just in case
+    const imageUrl = item ? item.unlockedImg : "mystery/mystery_item.png";
 
     showMysteryModal(name, imageUrl);
 }
+
 
 
 
