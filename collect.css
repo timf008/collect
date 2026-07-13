@@ -255,12 +255,12 @@ body {
 }
 
 .mystery-card {
-  background: #1a1a1a;
+  background: #ffffff;
   border: 2px solid #333;
   padding: 12px;
   border-radius: 10px;
   text-align: center;
-  height: 180px;        /* <<< FIX: uniform card height */
+  height: 120px;        /* <<< FIX: uniform card height */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -268,10 +268,10 @@ body {
 }
 
 .mystery-card img {
-    width: 80px;
-    height: 80px;        /* <<< forces uniform height */
-    object-fit: contain; /* <<< prevents distortion */
-    opacity: 0.6;        /* locked look */
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    opacity: 0.6; /* looks mysterious until unlocked */
 }
 
 
