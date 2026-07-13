@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Diamond Heroes</title>
+    <title>Collect</title>
     <link rel="stylesheet" href="collect.css">
 </head>
 
 <body>
 
     <div class="collect-header">
-    <h1>Diamond Heroes</h1>
+    <h1>Collect</h1>
 
     <div class="user-info">
         <div id="tokenBalance">🪙 0</div>
@@ -64,6 +64,20 @@
             <button onclick="closeModal()">Cancel</button>
         </div>
     </div>
+
+<div id="mysteryModal" class="mystery-modal hidden">
+  <div class="mystery-content">
+    <h2>Mystery Card Unlocked!</h2>
+    <p>You have unlocked:</p>
+
+    <img id="mysteryImage" class="mystery-image" />
+
+    <div id="mysteryName" class="mystery-name"></div>
+
+    <button onclick="closeMysteryModal()">OK</button>
+  </div>
+</div>
+
 
     <script src="collect.js"></script>
 </body>
