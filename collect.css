@@ -233,7 +233,6 @@ body {
     border: 1px solid #d0d7e2;
     border-radius: 10px;
     padding: 20px;
-    margin-top: 25px;
     max-width: 480px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
@@ -250,7 +249,7 @@ body {
 /* ⭐ Always 2×2 grid */
 #mysteryGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* fixed 2 columns */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     width: 100%;
     box-sizing: border-box;
@@ -263,8 +262,6 @@ body {
     padding: 12px;
     border-radius: 10px;
     text-align: center;
-
-    /* ⭐ Responsive height */
     min-height: 140px;
     height: auto;
 
@@ -273,15 +270,14 @@ body {
     justify-content: flex-start;
     align-items: center;
 
-    /* ⭐ Prevent overflow */
     overflow: hidden;
     box-sizing: border-box;
 }
 
 /* Image */
 .mystery-card img {
-    width: 80px;      /* smaller so text fits */
-    height: auto;     /* natural proportions */
+    width: 80px;
+    height: auto;
     object-fit: contain;
     opacity: 0.6;
 }
@@ -291,8 +287,6 @@ body {
     margin-top: 8px;
     font-size: 15px;
     color: #2a3b5f;
-
-    /* ⭐ Prevent text escaping */
     word-wrap: break-word;
     white-space: normal;
     text-align: center;
@@ -314,31 +308,42 @@ body {
     box-shadow: 0 0 6px rgba(42,110,242,0.4);
 }
 
-/* Ensure both boxes stay the same width */
+/* ------------------------------
+   Layout Widths
+------------------------------ */
 .weekly-hunt,
 .mystery-items {
     width: 480px;
 }
 
 /* ------------------------------
-   Mystery Boxes/Weekly Challenge Layout
+   Mystery Boxes / Weekly Challenge Layout
 ------------------------------ */
 
 .challenge-mystery-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr; /* left column, right column */
     gap: 20px;
-    align-items: start;
+    align-items: start; /* ⭐ ensures top alignment */
 }
 
-#weeklyHuntBox,
+/* Left column placement */
+#weeklyHuntBox {
+    grid-column: 1;
+    grid-row: 1;
+}
+
 #mysteryChestBox {
-    grid-column: 1; /* left side */
+    grid-column: 1;
+    grid-row: 2;
 }
 
+/* Right column placement */
 #mysteryItemsBox {
-    grid-column: 2; /* right side */
+    grid-column: 2;
+    grid-row: 1 / span 2; /* ⭐ spans full height */
 }
+
 
 
 
