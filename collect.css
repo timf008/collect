@@ -328,12 +328,26 @@ body {
     width: 480px;
 }
 
+/* ------------------------------
+   Mystery Boxes/Weekly Challenge Layout
+------------------------------ */
+
 .challenge-mystery-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr; /* left column, right column */
     gap: 20px;
     align-items: start;
 }
+
+#weeklyHuntBox,
+#mysteryChestBox {
+    grid-column: 1; /* left side */
+}
+
+#mysteryItemsBox {
+    grid-column: 2; /* right side */
+}
+
 
 
 /* ------------------------------
