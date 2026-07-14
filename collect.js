@@ -64,15 +64,8 @@ const mystery = [
         name: "Slugger Spray",
         img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_spray.png"
-    },
-
-    
-    {
-        id: 999,
-        name: "Legendary Bat",
-        img: "mystery/mystery_chest.png",
-        unlockedImg: "mystery/legendary_bat.png"
     }
+
 ];
 
 
