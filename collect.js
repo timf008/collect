@@ -277,7 +277,7 @@ function checkMysteryUnlocks() {
 
     if (allComplete && !currentUser.mysteryChest?.unlocked) {
         currentUser.mysteryChest = { unlocked: true, id: 999 };
-        mysteryUnlockedPrompt("Mystery Chest", 999);
+        mysteryUnlockedPrompt("Legendary Bat", 999);
 
         // ⭐ Update chest UI immediately
         buildMysteryChest();
