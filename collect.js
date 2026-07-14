@@ -120,6 +120,7 @@ async function loadUser() {
     buildStadiumGrid();
     buildBusGrid();
     buildMysteryGrid();
+    buildMysterChest();
 }
 
 
@@ -296,9 +297,9 @@ function mysteryUnlockedPrompt(name, id) {
 }
 
 // --------------------------------------
-// Myster Chest Rendering Function
+// Build Mystery Chest
 // --------------------------------------
-function renderMysteryChest() {
+function buildMysteryChest() {
     const chest = currentUser.mysteryChest;
 
     const container = document.getElementById("mysteryChestContent");
