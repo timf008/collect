@@ -269,17 +269,18 @@ function checkMysteryUnlocks() {
     }
 
     // --------------------------------------
-    // Unlock Mystery Chest (999) + Legendary Bat
+    // Unlock Mystery Chest (separate slot)
     // --------------------------------------
     const allComplete = fullCharacters && fullStadiums && fullBuses;
 
-    if (allComplete && !unlocked.includes(999)) {
-        unlocked.push(999);
+    if (allComplete && !currentUser.mysteryChest) {
+        currentUser.mysteryChest = true;
         mysteryUnlockedPrompt("Mystery Chest", 999);
     }
 
     currentUser.mystery = unlocked;
 }
+
 
 
 
