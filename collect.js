@@ -277,7 +277,7 @@ function checkMysteryUnlocks() {
 
     if (allComplete && !currentUser.mysteryChest?.unlocked) {
         currentUser.mysteryChest = { unlocked: true, id: 999 };
-        mysteryUnlockedPrompt("Legendary Bat", 999);
+        mysteryUnlockedPrompt("Mystery Chest", 999);
 
         // ⭐ Update chest UI immediately
         buildMysteryChest();
@@ -452,11 +452,16 @@ document.getElementById("confirmRedeem").addEventListener("click", async () => {
 // Mystery Modal Function
 // --------------------------------------
 function showMysteryModal(name, imageUrl) {
-    document.getElementById("mysteryName").textContent = name;
+    // ⭐ Update modal title dynamically
+    document.getElementById("mysteryName").textContent = `${name} Unlocked`;
+
+    // Update image
     document.getElementById("mysteryImage").src = imageUrl;
 
+    // Show modal
     document.getElementById("mysteryModal").classList.remove("hidden");
 }
+
 
 // --------------------------------------
 // Mystery Modal Close Button
