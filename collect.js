@@ -120,7 +120,7 @@ async function loadUser() {
     buildStadiumGrid();
     buildBusGrid();
     buildMysteryGrid();
-    buildMysterChest();
+    buildMysteryChest();
 }
 
 
