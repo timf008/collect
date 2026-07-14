@@ -64,16 +64,16 @@ const mystery = [
         name: "Slugger Spray",
         img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_spray.png"
-    },
-
-    {
-        id: 999,
-        name: "Mystery Chest",
-        img: "mystery/mystery_chest.png",        // locked
-        unlockedImg: "mystery/legendary_bat.png" // unlocked
     }
 
 ];
+
+const chest = {
+    id: 999,
+    name: "Mystery Chest",
+    img: "mystery/mystery_chest.png",        // locked
+    unlockedImg: "mystery/legendary_bat.png" // unlocked
+};
 
 
 
@@ -233,53 +233,7 @@ function buildMysteryGrid() {
 // --------------------------------------
 // Mystery Unlock Logic (Patched for Modal)
 // --------------------------------------
-function checkMysteryUnlocks() {
-    const unlocked = currentUser.mystery || [];
 
-    const charCount = currentUser.collectibles.filter(id => id >= 101 && id <= 110).length;
-    const stadiumCount = currentUser.collectibles.filter(id => id >= 111 && id <= 120).length;
-    const busCount = currentUser.collectibles.filter(id => id >= 121 && id <= 130).length;
-
-    const fullCharacters = charCount === 10;
-    const fullStadiums = stadiumCount === 10;
-    const fullBuses = busCount === 10;
-
-    // Unlock Slugger Chew (200)
-    if (charCount >= 5 && !unlocked.includes(200)) {
-        unlocked.push(200);
-        mysteryUnlockedPrompt("Slugger Chew", 200);
-    }
-
-    // Unlock Slugger Juice (201)
-    if (busCount >= 5 && !unlocked.includes(201)) {
-        unlocked.push(201);
-        mysteryUnlockedPrompt("Slugger Juice", 201);
-    }
-
-    // Unlock Slugger Seeds (202)
-    if (stadiumCount >= 5 && !unlocked.includes(202)) {
-        unlocked.push(202);
-        mysteryUnlockedPrompt("Slugger Seeds", 202);
-    }
-
-    // Unlock Slugger Spray (203)
-    if ((fullCharacters || fullStadiums || fullBuses) && !unlocked.includes(203)) {
-        unlocked.push(203);
-        mysteryUnlockedPrompt("Slugger Spray", 203);
-    }
-
-    // --------------------------------------
-    // Unlock Mystery Chest (separate slot)
-    // --------------------------------------
-    const allComplete = fullCharacters && fullStadiums && fullBuses;
-
-    if (allComplete && !currentUser.mysteryChest) {
-        currentUser.mysteryChest = true;
-        mysteryUnlockedPrompt("Mystery Chest", 999);
-    }
-
-    currentUser.mystery = unlocked;
-}
 
 
 
