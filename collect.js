@@ -452,16 +452,11 @@ document.getElementById("confirmRedeem").addEventListener("click", async () => {
 // Mystery Modal Function
 // --------------------------------------
 function showMysteryModal(name, imageUrl) {
-    // ⭐ Update modal title dynamically
-    document.getElementById("mysteryName").textContent = `${name} Unlocked`;
-
-    // Update image
+    document.getElementById("mysteryName").textContent = name;
     document.getElementById("mysteryImage").src = imageUrl;
 
-    // Show modal
     document.getElementById("mysteryModal").classList.remove("hidden");
 }
-
 
 // --------------------------------------
 // Mystery Modal Close Button
