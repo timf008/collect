@@ -277,10 +277,34 @@ function checkMysteryUnlocks() {
 
     if (allComplete && !currentUser.mysteryChest?.unlocked) {
         currentUser.mysteryChest = { unlocked: true, id: 999 };
-        mysteryUnlockedPrompt("Legendary Bat", 999);
+        mysteryUnlockedPrompt("Mystery Chest", 999);
+
+        // ⭐ Update chest UI immediately
+        buildMysteryChest();
     }
 
     currentUser.mystery = unlocked;
+
+    // ⭐ ALWAYS refresh both UI sections after unlocks
+    buildMysteryGrid();
+    buildMysteryChest();
+}
+
+
+
+// --------------------------------------
+// Build Mystery Chest
+// --------------------------------------
+function buildMysteryChest() {
+    const chest = currentUser.mysteryChest;
+
+    const container = document.getElementById("mysteryChestContent");
+
+    if (!chest || !chest.unlocked) {
+        container.innerHTML = `<img src="mystery/mystery_chest.png" alt="Mystery Chest Locked">`;
+    } else {
+        container.innerHTML = `<img src="mystery/legendary_bat.png" alt="Legendary Bat">`;
+    }
 }
 
 
@@ -299,22 +323,6 @@ function mysteryUnlockedPrompt(name, id) {
     const imageUrl = item ? item.unlockedImg : "mystery/mystery_item.png";
     showMysteryModal(name, imageUrl);
 }
-
-// --------------------------------------
-// Build Mystery Chest
-// --------------------------------------
-function buildMysteryChest() {
-    const chest = currentUser.mysteryChest;
-
-    const container = document.getElementById("mysteryChestContent");
-
-    if (!chest || !chest.unlocked) {
-        container.innerHTML = `<img src="mystery/mystery_chest.png" alt="Mystery Chest Locked">`;
-    } else {
-        container.innerHTML = `<img src="mystery/legendary_bat.png" alt="Legendary Bat">`;
-    }
-}
-
 
 
 
