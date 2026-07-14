@@ -296,11 +296,14 @@ function checkMysteryUnlocks() {
 // New Modal-Based Unlock Prompt
 // --------------------------------------
 function mysteryUnlockedPrompt(name, id) {
-    const item = mystery.find(m => m.id === id);
+    let item = mystery.find(m => m.id === id);
 
-    // Fallback just in case
+    // Chest fallback
+    if (!item && id === 999) {
+        item = chest;
+    }
+
     const imageUrl = item ? item.unlockedImg : "mystery/mystery_item.png";
-
     showMysteryModal(name, imageUrl);
 }
 
