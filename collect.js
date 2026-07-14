@@ -44,7 +44,7 @@ const mystery = [
     {
         id: 200,
         name: "Slugger Chew",
-        img: "mystery/mystery_item.png",      // shown until unlocked
+        img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_chew.png"
     },
     {
@@ -64,9 +64,17 @@ const mystery = [
         name: "Slugger Spray",
         img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_spray.png"
-    }
+    },
 
+    
+    {
+        id: 999,
+        name: "Mystery Chest",
+        img: "mystery/mystery_chest.png",
+        unlockedImg: "mystery/legendary_bat.png"
+    }
 ];
+
 
 const chest = {
     id: 999,
