@@ -64,7 +64,15 @@ const mystery = [
         name: "Slugger Spray",
         img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_spray.png"
+    },
+
+    {
+        id: 999,
+        name: "Mystery Chest",
+        img: "mystery/mystery_chest.png",        // locked
+        unlockedImg: "mystery/legendary_bat.png" // unlocked
     }
+
 ];
 
 
@@ -260,8 +268,19 @@ function checkMysteryUnlocks() {
         mysteryUnlockedPrompt("Slugger Spray", 203);
     }
 
+    // --------------------------------------
+    // Unlock Mystery Chest (999) + Legendary Bat
+    // --------------------------------------
+    const allComplete = fullCharacters && fullStadiums && fullBuses;
+
+    if (allComplete && !unlocked.includes(999)) {
+        unlocked.push(999);
+        mysteryUnlockedPrompt("Mystery Chest", 999);
+    }
+
     currentUser.mystery = unlocked;
 }
+
 
 
 // --------------------------------------
