@@ -339,15 +339,14 @@ body {
 
 /* Chest Image (locked or unlocked) */
 #mysteryChestContent img {
-    width: 140px;
+    width: 400px;
     height: auto;
     object-fit: contain;
     margin-top: 10px;
-
-    /* Locked look */
     opacity: 0.85;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
+
 
 /* Unlocked Legendary Bat glow */
 .mystery-chest.unlocked #mysteryChestContent img {
