@@ -69,7 +69,7 @@ const mystery = [
     
     {
         id: 999,
-        name: "Mystery Chest",
+        name: "Legendary Bat",
         img: "mystery/mystery_chest.png",
         unlockedImg: "mystery/legendary_bat.png"
     }
@@ -78,7 +78,7 @@ const mystery = [
 
 const chest = {
     id: 999,
-    name: "Mystery Chest",
+    name: "Legendary Bat",
     img: "mystery/mystery_chest.png",        // locked
     unlockedImg: "mystery/legendary_bat.png" // unlocked
 };
