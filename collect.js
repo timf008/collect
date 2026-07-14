@@ -233,8 +233,53 @@ function buildMysteryGrid() {
 // --------------------------------------
 // Mystery Unlock Logic (Patched for Modal)
 // --------------------------------------
+function checkMysteryUnlocks() {
+    const unlocked = currentUser.mystery || [];
 
+    const charCount = currentUser.collectibles.filter(id => id >= 101 && id <= 110).length;
+    const stadiumCount = currentUser.collectibles.filter(id => id >= 111 && id <= 120).length;
+    const busCount = currentUser.collectibles.filter(id => id >= 121 && id <= 130).length;
 
+    const fullCharacters = charCount === 10;
+    const fullStadiums = stadiumCount === 10;
+    const fullBuses = busCount === 10;
+
+    // Unlock Slugger Chew (200)
+    if (charCount >= 5 && !unlocked.includes(200)) {
+        unlocked.push(200);
+        mysteryUnlockedPrompt("Slugger Chew", 200);
+    }
+
+    // Unlock Slugger Juice (201)
+    if (busCount >= 5 && !unlocked.includes(201)) {
+        unlocked.push(201);
+        mysteryUnlockedPrompt("Slugger Juice", 201);
+    }
+
+    // Unlock Slugger Seeds (202)
+    if (stadiumCount >= 5 && !unlocked.includes(202)) {
+        unlocked.push(202);
+        mysteryUnlockedPrompt("Slugger Seeds", 202);
+    }
+
+    // Unlock Slugger Spray (203)
+    if ((fullCharacters || fullStadiums || fullBuses) && !unlocked.includes(203)) {
+        unlocked.push(203);
+        mysteryUnlockedPrompt("Slugger Spray", 203);
+    }
+
+    // --------------------------------------
+    // Unlock Mystery Chest (separate slot)
+    // --------------------------------------
+    const allComplete = fullCharacters && fullStadiums && fullBuses;
+
+    if (allComplete && !currentUser.mysteryChest?.unlocked) {
+        currentUser.mysteryChest = { unlocked: true, id: 999 };
+        mysteryUnlockedPrompt("Mystery Chest", 999);
+    }
+
+    currentUser.mystery = unlocked;
+}
 
 
 
@@ -250,6 +295,20 @@ function mysteryUnlockedPrompt(name, id) {
     showMysteryModal(name, imageUrl);
 }
 
+// --------------------------------------
+// Myster Chest Rendering Function
+// --------------------------------------
+function renderMysteryChest() {
+    const chest = currentUser.mysteryChest;
+
+    const container = document.getElementById("mysteryChestContent");
+
+    if (!chest || !chest.unlocked) {
+        container.innerHTML = `<img src="mystery/mystery_chest.png" alt="Mystery Chest Locked">`;
+    } else {
+        container.innerHTML = `<img src="mystery/legendary_bat.png" alt="Legendary Bat">`;
+    }
+}
 
 
 
