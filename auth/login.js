@@ -6,15 +6,19 @@ export function initLogin(onSuccess) {
 
     const API = "https://collect-backend-tg58.onrender.com";
 
-    // Attach event listeners to login UI
-    const loginBtn = document.getElementById("loginBtn");
-    const createBtn = document.getElementById("createBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
+    // --------------------------------------
+    // Ensure DOM is ready before attaching events
+    // --------------------------------------
+    document.addEventListener("DOMContentLoaded", () => {
 
-    // Make sure buttons exist before attaching
-    if (loginBtn) loginBtn.onclick = login;
-    if (createBtn) createBtn.onclick = createAccount;
-    if (logoutBtn) logoutBtn.onclick = logout;
+        const loginBtn = document.getElementById("loginBtn");
+        const createBtn = document.getElementById("createBtn");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        if (loginBtn) loginBtn.addEventListener("click", login);
+        if (createBtn) createBtn.addEventListener("click", createAccount);
+        if (logoutBtn) logoutBtn.addEventListener("click", logout);
+    });
 
     // --------------------------------------
     // Log Out
@@ -49,7 +53,6 @@ export function initLogin(onSuccess) {
 
         const newUser = await loadUserFromServer(userId);
 
-        // Hand off to Collect
         onSuccess(newUser);
     }
 
@@ -149,7 +152,6 @@ export function initLogin(onSuccess) {
 
         alert("Log In Successful");
 
-        // Hand off to Collect
         onSuccess(updatedUser);
     }
 
