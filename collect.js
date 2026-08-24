@@ -1,3 +1,6 @@
+// Your backend base URL
+const API = "https://collect-backend-tg58.onrender.com";
+
 // =======================================
 // LOGIN WRAPPER FOR COLLECT
 // =======================================
@@ -125,8 +128,6 @@ let currentUser = null;
 let pendingRedeemId = null;
 let pendingRedeemCost = null;
 
-// Your backend base URL
-const API = "https://collect-backend-tg58.onrender.com";
 
 // --------------------------------------
 // Load User
