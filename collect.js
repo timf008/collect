@@ -22,6 +22,10 @@ if (!storedCode) {
         // Reveal Collect UI
         document.getElementById("mainContent").style.display = "block";
 
+        // Hide Log In Box
+	document.getElementById("loginBox").style.display = "none";
+
+
         // Load Collect data
         await loadUser();
         await loadWeeklyChallenge();
