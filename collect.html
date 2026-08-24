@@ -8,103 +8,112 @@
 
 <body>
 
-    <div class="collect-header">
-    <h1>Diamond Heroes</h1>
-
-
+    <!-- ============================
+         LOGIN CONTAINER
+         ============================ -->
+    <div id="loginContainer">
         <h3>Log In</h3>
 
-        <!-- 6-digit code input -->
         <input id="loginCode" placeholder="6-digit code">
         <div id="codeError" class="error"></div>
 
-        <!-- Password input -->
         <input id="loginPassword" type="password" placeholder="Password">
         <div id="passwordError" class="error"></div>
 
-        <!-- Buttons (IDs match your login.js exactly) -->
-        <button onclick="login()">Log In</button>
-        <button onclick="createAccount()">Generate Code</button>
-        <button onclick="logout()">Log Out</button>
-
-
-    <div class="user-info">
-        <div id="tokenBalance">🪙 0</div>
-        <div id="userCode">ID: ----</div>
-        <div id="collectorBadge">Level: ---</div>
-        <div id="levelMeter" class="level-meter"></div>
+        <!-- Buttons now use IDs (no inline onclicks) -->
+        <button id="loginBtn">Log In</button>
+        <button id="createBtn">Generate Code</button>
+        <button id="logoutBtn">Log Out</button>
     </div>
-</div>
 
 
-<div class="challenge-mystery-wrapper">
+    <!-- ============================
+         MAIN CONTENT (hidden until login)
+         ============================ -->
+    <div id="mainContent" style="display:none;">
 
-    <!-- Weekly Challenge -->
-    <div id="weeklyHuntBox" class="weekly-hunt">
-        <h3>Weekly Challenge</h3>
-        <p id="weeklyText">Loading weekly challenge...</p>
+        <div class="collect-header">
+            <h1>Diamond Heroes</h1>
 
-        <div class="hunt-row">
-            <input id="huntAnswer" placeholder="Enter answer">
-            <button onclick="submitHunt()">Submit</button>
-            <div id="huntResult"></div>
+            <div class="user-info">
+                <div id="tokenBalance">🪙 0</div>
+                <div id="userCode">ID: ----</div>
+                <div id="collectorBadge">Level: ---</div>
+                <div id="levelMeter" class="level-meter"></div>
+            </div>
         </div>
-    </div>
-
-    <!-- Mystery Chest (featured spot under Weekly Challenge) -->
-    <div id="mysteryChestBox" class="mystery-chest">
-        <h3>Mystery Chest</h3>
-        <div id="mysteryChestContent"></div>
-    </div>
-
-    <!-- Mystery Items Grid -->
-    <div id="mysteryItemsBox" class="mystery-items">
-        <h3>Mystery Items</h3>
-        <div id="mysteryGrid"></div>
-    </div>
-
-</div>
 
 
-    <!-- Characters Section -->
-<h2 class="section-title">Characters</h2>
-<div id="characterGrid" class="grid"></div>
+        <div class="challenge-mystery-wrapper">
 
-<!-- Stadiums Section -->
-<h2 class="section-title">Stadiums</h2>
-<div id="stadiumGrid" class="grid"></div>
+            <!-- Weekly Challenge -->
+            <div id="weeklyHuntBox" class="weekly-hunt">
+                <h3>Weekly Challenge</h3>
+                <p id="weeklyText">Loading weekly challenge...</p>
 
-<!-- Team Buses Section -->
-<h2 class="section-title">Team Buses</h2>
-<div id="busGrid" class="grid"></div>
+                <div class="hunt-row">
+                    <input id="huntAnswer" placeholder="Enter answer">
+                    <button id="huntSubmitBtn">Submit</button>
+                    <div id="huntResult"></div>
+                </div>
+            </div>
 
+            <!-- Mystery Chest -->
+            <div id="mysteryChestBox" class="mystery-chest">
+                <h3>Mystery Chest</h3>
+                <div id="mysteryChestContent"></div>
+            </div>
 
+            <!-- Mystery Items -->
+            <div id="mysteryItemsBox" class="mystery-items">
+                <h3>Mystery Items</h3>
+                <div id="mysteryGrid"></div>
+            </div>
 
-    <!-- Redeem Modal -->
-    <div id="redeemModal" class="modal">
-        <div class="modal-content">
-            <h2 id="modalTitle"></h2>
-            <p id="modalCost"></p>
-            <button id="confirmRedeem">Redeem</button>
-            <button onclick="closeModal()">Cancel</button>
         </div>
-    </div>
-
-<div id="mysteryModal" class="mystery-modal hidden">
-  <div class="mystery-content">
-    <h2>Mystery Item Unlocked!</h2>
-    <p>You have unlocked:</p>
-
-    <img id="mysteryImage" class="mystery-image" />
-
-    <div id="mysteryName" class="mystery-name"></div>
-
-    <button onclick="closeMysteryModal()">OK</button>
-  </div>
-</div>
 
 
+        <!-- Characters -->
+        <h2 class="section-title">Characters</h2>
+        <div id="characterGrid" class="grid"></div>
+
+        <!-- Stadiums -->
+        <h2 class="section-title">Stadiums</h2>
+        <div id="stadiumGrid" class="grid"></div>
+
+        <!-- Buses -->
+        <h2 class="section-title">Team Buses</h2>
+        <div id="busGrid" class="grid"></div>
+
+
+        <!-- Redeem Modal -->
+        <div id="redeemModal" class="modal">
+            <div class="modal-content">
+                <h2 id="modalTitle"></h2>
+                <p id="modalCost"></p>
+                <button id="confirmRedeem">Redeem</button>
+                <button id="cancelRedeemBtn">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Mystery Modal -->
+        <div id="mysteryModal" class="mystery-modal hidden">
+            <div class="mystery-content">
+                <h2>Mystery Item Unlocked!</h2>
+                <p>You have unlocked:</p>
+
+                <img id="mysteryImage" class="mystery-image" />
+                <div id="mysteryName" class="mystery-name"></div>
+
+                <button id="closeMysteryBtn">OK</button>
+            </div>
+        </div>
+
+    </div> <!-- END mainContent -->
+
+
+    <!-- Load Collect JS as a module -->
     <script type="module" src="collect.js"></script>
+
 </body>
 </html>
-
