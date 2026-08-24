@@ -481,7 +481,6 @@ function buildBusGrid() {
 // Open Redeem Modal
 // --------------------------------------
 function openModal(id, cost, name) {
-    // ⭐ Ensure user is logged in
     const userId = localStorage.getItem("userCode");
     if (!userId) {
         alert("Please log in first.");
@@ -509,7 +508,6 @@ function closeModal() {
 // --------------------------------------
 document.getElementById("confirmRedeem").addEventListener("click", async () => {
     const userId = localStorage.getItem("userCode");
-
     if (!userId) {
         alert("Please log in first.");
         return;
@@ -529,28 +527,32 @@ document.getElementById("confirmRedeem").addEventListener("click", async () => {
 
     if (data.ok) {
         closeModal();
-        await loadUser(); // refresh tokens + owned collectibles
+        await loadUser();
     } else {
         alert(data.reason);
     }
 });
 
 // --------------------------------------
-// Mystery Modal Function
+// Mystery Modal
 // --------------------------------------
 function showMysteryModal(name, imageUrl) {
     document.getElementById("mysteryName").textContent = name;
     document.getElementById("mysteryImage").src = imageUrl;
-
     document.getElementById("mysteryModal").classList.remove("hidden");
 }
 
-// --------------------------------------
-// Mystery Modal Close Button
-// --------------------------------------
 function closeMysteryModal() {
     document.getElementById("mysteryModal").classList.add("hidden");
 }
+
+// --------------------------------------
+// Expose globally for inline HTML
+// --------------------------------------
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.showMysteryModal = showMysteryModal;
+window.closeMysteryModal = closeMysteryModal;
 
 
 
