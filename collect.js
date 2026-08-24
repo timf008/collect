@@ -1,3 +1,42 @@
+// =======================================
+// LOGIN WRAPPER FOR COLLECT
+// =======================================
+
+// Load login module (your login.js must export initLogin)
+import { initLogin } from "./auth/login.js";
+
+// Check if user is already logged in
+const storedCode = localStorage.getItem("userCode");
+
+if (!storedCode) {
+
+    // Hide Collect UI until login succeeds
+    document.getElementById("mainContent").style.display = "none";
+
+    // Initialize login UI
+    initLogin(async (user) => {
+
+        // Save userCode from login.js
+        localStorage.setItem("userCode", user.userId);
+
+        // Reveal Collect UI
+        document.getElementById("mainContent").style.display = "block";
+
+        // Load Collect data
+        await loadUser();
+        await loadWeeklyChallenge();
+    });
+
+} else {
+
+    // User already logged in — show Collect immediately
+    document.getElementById("mainContent").style.display = "block";
+
+    // Load Collect data
+    loadUser();
+    loadWeeklyChallenge();
+}
+
 // --------------------------------------
 // Character List (20 total)
 // --------------------------------------
