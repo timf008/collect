@@ -24,6 +24,9 @@ if (!storedCode) {
         // Hide entire overlay
         document.getElementById("loginContainer").style.display = "none";
 
+        // Header Log Out Button
+        document.getElementById("logoutHeaderBtn")?.addEventListener("click", logout);
+
         await loadUser();
         await loadWeeklyChallenge();
     });
