@@ -11,14 +11,17 @@ export function initLogin(onSuccess) {
     // --------------------------------------
     document.addEventListener("DOMContentLoaded", () => {
 
-        const loginBtn = document.getElementById("loginBtn");
-        const createBtn = document.getElementById("createBtn");
-        const logoutBtn = document.getElementById("logoutBtn");
+        // Attach events immediately (modules run after DOM is parsed)
+const loginBtn = document.getElementById("loginBtn");
+const createBtn = document.getElementById("createBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const logoutHeaderBtn = document.getElementById("logoutHeaderBtn");
 
-        if (loginBtn) loginBtn.addEventListener("click", login);
-        if (createBtn) createBtn.addEventListener("click", createAccount);
-        if (logoutBtn) logoutBtn.addEventListener("click", logout);
-    });
+loginBtn?.addEventListener("click", login);
+createBtn?.addEventListener("click", createAccount);
+logoutBtn?.addEventListener("click", logout);
+logoutHeaderBtn?.addEventListener("click", logout);
+
 
     // --------------------------------------
     // Log Out
