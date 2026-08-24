@@ -11,6 +11,23 @@
     <div class="collect-header">
     <h1>Diamond Heroes</h1>
 
+
+        <h3>Log In</h3>
+
+        <!-- 6-digit code input -->
+        <input id="loginCode" placeholder="6-digit code">
+        <div id="codeError" class="error"></div>
+
+        <!-- Password input -->
+        <input id="loginPassword" type="password" placeholder="Password">
+        <div id="passwordError" class="error"></div>
+
+        <!-- Buttons (IDs match your login.js exactly) -->
+        <button onclick="login()">Log In</button>
+        <button onclick="createAccount()">Generate Code</button>
+        <button onclick="logout()">Log Out</button>
+
+
     <div class="user-info">
         <div id="tokenBalance">🪙 0</div>
         <div id="userCode">ID: ----</div>
