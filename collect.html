@@ -8,10 +8,9 @@
 
 <body>
 
-    <!-- ============================
-         LOGIN CONTAINER
-         ============================ -->
-    <div id="loginContainer">
+<!-- LOGIN CONTAINER (centered before login) -->
+<div id="loginContainer" class="login-wrapper">
+    <div id="loginBox" class="login-box">
         <h3>Log In</h3>
 
         <input id="loginCode" placeholder="6-digit code">
@@ -20,11 +19,12 @@
         <input id="loginPassword" type="password" placeholder="Password">
         <div id="passwordError" class="error"></div>
 
-        <!-- Buttons now use IDs (no inline onclicks) -->
         <button id="loginBtn">Log In</button>
         <button id="createBtn">Generate Code</button>
         <button id="logoutBtn">Log Out</button>
     </div>
+</div>
+
 
 
     <!-- ============================
