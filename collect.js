@@ -13,36 +13,32 @@ const storedCode = localStorage.getItem("userCode");
 
 if (!storedCode) {
 
-    // Hide Collect UI until login succeeds
     document.getElementById("mainContent").style.display = "none";
 
-    // Initialize login UI
     initLogin(async (user) => {
 
-        // Save userCode from login.js
         localStorage.setItem("userCode", user.userId);
 
-        // Reveal Collect UI
         document.getElementById("mainContent").style.display = "block";
 
-        // Hide Log In Box
-	document.getElementById("loginBox").style.display = "none";
+        // Hide entire overlay
+        document.getElementById("loginContainer").style.display = "none";
 
-
-        // Load Collect data
         await loadUser();
         await loadWeeklyChallenge();
     });
 
 } else {
 
-    // User already logged in — show Collect immediately
     document.getElementById("mainContent").style.display = "block";
 
-    // Load Collect data
+    // Hide entire overlay on auto-login
+    document.getElementById("loginContainer").style.display = "none";
+
     loadUser();
     loadWeeklyChallenge();
 }
+
 
 // --------------------------------------
 // Character List (20 total)
