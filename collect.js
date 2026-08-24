@@ -533,6 +533,8 @@ document.getElementById("confirmRedeem").addEventListener("click", async () => {
     }
 });
 
+document.getElementById("cancelRedeemBtn").addEventListener("click", closeModal);
+
 // --------------------------------------
 // Mystery Modal
 // --------------------------------------
