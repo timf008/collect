@@ -4,22 +4,31 @@
 
 export function initLogin(onSuccess) {
 
-    let currentUser = null;
     const API = "https://collect-backend-tg58.onrender.com";
 
+    // Attach event listeners to login UI
+    const loginBtn = document.getElementById("loginBtn");
+    const createBtn = document.getElementById("createBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // Make sure buttons exist before attaching
+    if (loginBtn) loginBtn.onclick = login;
+    if (createBtn) createBtn.onclick = createAccount;
+    if (logoutBtn) logoutBtn.onclick = logout;
+
     // --------------------------------------
-    // Log Out (GLOBAL)
+    // Log Out
     // --------------------------------------
-    window.logout = function () {
+    function logout() {
         localStorage.removeItem("userCode");
         alert("Logged out");
         location.reload();
-    };
+    }
 
     // --------------------------------------
     // Create New Account
     // --------------------------------------
-    window.createAccount = async function () {
+    async function createAccount() {
         const res = await fetch(`${API}/createUser`, { method: "POST" });
         const data = await res.json();
 
@@ -42,7 +51,7 @@ export function initLogin(onSuccess) {
 
         // Hand off to Collect
         onSuccess(newUser);
-    };
+    }
 
     // --------------------------------------
     // Helper - Load User From Server
@@ -58,7 +67,7 @@ export function initLogin(onSuccess) {
     }
 
     // --------------------------------------
-    // Log-In Validation Helpers
+    // Error Helpers
     // --------------------------------------
     function showError(element, message) {
         element.textContent = message;
@@ -79,7 +88,7 @@ export function initLogin(onSuccess) {
     // --------------------------------------
     // Log In
     // --------------------------------------
-    window.login = async function () {
+    async function login() {
         clearErrors();
 
         const codeInput = document.getElementById("loginCode");
@@ -142,7 +151,7 @@ export function initLogin(onSuccess) {
 
         // Hand off to Collect
         onSuccess(updatedUser);
-    };
+    }
 
     // --------------------------------------
     // Analyzer Token Rewards
@@ -186,33 +195,4 @@ export function initLogin(onSuccess) {
             window.location.href = "/batter-analyzer";
         });
     }
-
-    // --------------------------------------
-    // Award Functions (global)
-    // --------------------------------------
-    window.awardPitcherTokens = async function () {
-        const userId = localStorage.getItem("userCode");
-
-        const res = await fetch(`${API}/awardPitcherTokens`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId })
-        });
-
-        const data = await res.json();
-        if (data.ok) alert("Pitcher Analyzer Tokens Awarded!");
-    };
-
-    window.awardBatterTokens = async function () {
-        const userId = localStorage.getItem("userCode");
-
-        const res = await fetch(`${API}/awardBatterTokens`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId })
-        });
-
-        const data = await res.json();
-        if (data.ok) alert("Batter Analyzer Tokens Awarded!");
-    };
 }
