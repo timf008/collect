@@ -24,8 +24,6 @@ if (!storedCode) {
         // Hide entire overlay
         document.getElementById("loginContainer").style.display = "none";
 
-        // Header Log Out Button
-        document.getElementById("logoutHeaderBtn")?.addEventListener("click", logout);
 
         await loadUser();
         await loadWeeklyChallenge();
@@ -129,20 +127,35 @@ let pendingRedeemCost = null;
 
 
 // --------------------------------------
-// Load User
+// Load User (SAFE VERSION)
 // --------------------------------------
 async function loadUser() {
     const userId = localStorage.getItem("userCode");
 
+    if (!userId) {
+        console.error("No userCode found in localStorage.");
+        return;
+    }
+
     const res = await fetch(`${API}/loadUser`, {
         method: "POST",
-        body: JSON.stringify({ userId }),
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId })
     });
 
-    currentUser = await res.json();
-    currentUser.userId = userId;   // ⭐ REQUIRED FIX
+    const data = await res.json();
 
+    // ❌ If backend returned an error, stop immediately
+    if (!data || data.error) {
+        console.error("loadUser() failed:", data);
+        return;
+    }
+
+    // ✔ Safe to use now
+    currentUser = data;
+    currentUser.userId = userId;
+
+    // Update UI
     document.getElementById("tokenBalance").textContent = `Tokens: 🔶${currentUser.tokens}`;
     document.getElementById("userCode").textContent = "User Code: " + userId;
 
@@ -154,18 +167,21 @@ async function loadUser() {
 
     checkMysteryUnlocks();
 
+    // Save updated user safely
     await fetch(`${API}/saveUser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(currentUser)
     });
 
+    // Build UI grids
     buildCharacterGrid();
     buildStadiumGrid();
     buildBusGrid();
     buildMysteryGrid();
     buildMysteryChest();
 }
+
 
 
 
