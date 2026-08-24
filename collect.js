@@ -250,11 +250,23 @@ async function loadWeeklyChallenge() {
 }
 
 // --------------------------------------
-// Submit Hunt
+// Submit Hunt (SAFE VERSION)
 // --------------------------------------
 async function submitHunt() {
-    const answer = document.getElementById("huntAnswer").value;
+    const answer = document.getElementById("huntAnswer").value.trim();
     const userId = localStorage.getItem("userCode");
+
+    // ⭐ Prevent running without login
+    if (!userId) {
+        document.getElementById("huntResult").textContent = "Please log in first.";
+        return;
+    }
+
+    // ⭐ Prevent empty answers
+    if (!answer) {
+        document.getElementById("huntResult").textContent = "Please enter an answer.";
+        return;
+    }
 
     const res = await fetch(`${API}/weeklyHunt`, {
         method: "POST",
@@ -263,9 +275,14 @@ async function submitHunt() {
     });
 
     const data = await res.json();
-    document.getElementById("huntResult").textContent = data.message;
 
-    if (data.ok) loadUser(); // refresh tokens
+    // ⭐ Show backend message
+    document.getElementById("huntResult").textContent = data.message || "No response.";
+
+    // ⭐ Refresh tokens ONLY if correct
+    if (data.ok) {
+        await loadUser();   // refresh tokenBalance, badge, grids
+    }
 }
 
 // --------------------------------------
@@ -460,11 +477,17 @@ function buildBusGrid() {
     });
 }
 
-
 // --------------------------------------
 // Open Redeem Modal
 // --------------------------------------
 function openModal(id, cost, name) {
+    // ⭐ Ensure user is logged in
+    const userId = localStorage.getItem("userCode");
+    if (!userId) {
+        alert("Please log in first.");
+        return;
+    }
+
     pendingRedeemId = id;
     pendingRedeemCost = cost;
 
@@ -487,21 +510,26 @@ function closeModal() {
 document.getElementById("confirmRedeem").addEventListener("click", async () => {
     const userId = localStorage.getItem("userCode");
 
+    if (!userId) {
+        alert("Please log in first.");
+        return;
+    }
+
     const res = await fetch(`${API}/redeem`, {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             userId,
             collectibleId: pendingRedeemId,
             cost: pendingRedeemCost
-        }),
-        headers: { "Content-Type": "application/json" }
+        })
     });
 
     const data = await res.json();
 
     if (data.ok) {
         closeModal();
-        loadUser(); // refresh tokens + owned collectibles
+        await loadUser(); // refresh tokens + owned collectibles
     } else {
         alert(data.reason);
     }
@@ -523,6 +551,7 @@ function showMysteryModal(name, imageUrl) {
 function closeMysteryModal() {
     document.getElementById("mysteryModal").classList.add("hidden");
 }
+
 
 
 
