@@ -7,21 +7,17 @@ export function initLogin(onSuccess) {
     const API = "https://collect-backend-tg58.onrender.com";
 
     // --------------------------------------
-    // Ensure DOM is ready before attaching events
+    // Attach events immediately (modules run after DOM is parsed)
     // --------------------------------------
-    document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.getElementById("loginBtn");
+    const createBtn = document.getElementById("createBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const logoutHeaderBtn = document.getElementById("logoutHeaderBtn");
 
-        // Attach events immediately (modules run after DOM is parsed)
-const loginBtn = document.getElementById("loginBtn");
-const createBtn = document.getElementById("createBtn");
-const logoutBtn = document.getElementById("logoutBtn");
-const logoutHeaderBtn = document.getElementById("logoutHeaderBtn");
-
-loginBtn?.addEventListener("click", login);
-createBtn?.addEventListener("click", createAccount);
-logoutBtn?.addEventListener("click", logout);
-logoutHeaderBtn?.addEventListener("click", logout);
-
+    loginBtn?.addEventListener("click", login);
+    createBtn?.addEventListener("click", createAccount);
+    logoutBtn?.addEventListener("click", logout);
+    logoutHeaderBtn?.addEventListener("click", logout);
 
     // --------------------------------------
     // Log Out
@@ -29,7 +25,10 @@ logoutHeaderBtn?.addEventListener("click", logout);
     function logout() {
         localStorage.removeItem("userCode");
         alert("Logged out");
-        location.reload();
+
+        // Show login UI again
+        document.getElementById("loginContainer").style.display = "flex";
+        document.getElementById("mainContent").style.display = "none";
     }
 
     // --------------------------------------
