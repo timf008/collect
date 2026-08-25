@@ -32,31 +32,60 @@ export function initLogin(onSuccess) {
     }
 
     // --------------------------------------
-    // Create New Account
-    // --------------------------------------
-    async function createAccount() {
-        const res = await fetch(`${API}/createUser`, { method: "POST" });
-        const data = await res.json();
+// Create New Account
+// --------------------------------------
+async function createAccount() {
 
-        const userId = data.userId;
+    const password = prompt("Set a password for your new account:");
 
-        document.getElementById("loginCode").value = userId;
-
-        const password = prompt("Set a password for your new account:");
-
-        await fetch(`${API}/setPassword`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId, password })
-        });
-
-        localStorage.setItem("userCode", userId);
-        alert("Your account code is: " + userId);
-
-        const newUser = await loadUserFromServer(userId);
-
-        onSuccess(newUser);
+    // User clicked Cancel
+    if (password === null) {
+        return;
     }
+
+    // Require at least 6 characters
+    if (password.trim().length < 6) {
+        alert("Password must be at least 6 characters.");
+        return;
+    }
+
+    // Only create the account AFTER we have a valid password
+    const res = await fetch(`${API}/createUser`, {
+        method: "POST"
+    });
+
+    const data = await res.json();
+    const userId = data.userId;
+
+    // Set password
+    const passwordRes = await fetch(`${API}/setPassword`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userId,
+            password
+        })
+    });
+
+    const passwordData = await passwordRes.json();
+
+    if (passwordData.error) {
+        alert(passwordData.error);
+        return;
+    }
+
+    document.getElementById("loginCode").value = userId;
+
+    localStorage.setItem("userCode", userId);
+
+    alert("Your account code is: " + userId);
+
+    const newUser = await loadUserFromServer(userId);
+
+    onSuccess(newUser);
+}
 
     // --------------------------------------
     // Helper - Load User From Server
