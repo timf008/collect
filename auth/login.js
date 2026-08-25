@@ -166,18 +166,20 @@ async function createAccount() {
 
         localStorage.setItem("userCode", userId);
 
-        // ⭐ Daily login tokens
-        const tokenRes = await fetch(`${API}/awardTokens`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId, amount: 5 })
-        });
+        // ⭐ Daily login reward
+const tokenRes = await fetch(`${API}/dailyLoginReward`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ userId })
+});
 
-        const tokenData = await tokenRes.json();
+const tokenData = await tokenRes.json();
 
-        if (tokenData.ok) {
-            alert("Daily Tokens Awarded!");
-        }
+if (tokenData.ok) {
+    alert("Daily Login Reward: +15 Tokens!");
+}
 
         const updatedUser = await loadUserFromServer(userId);
 
