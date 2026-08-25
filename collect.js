@@ -250,40 +250,50 @@ async function loadWeeklyChallenge() {
 }
 
 // --------------------------------------
-// Submit Hunt (SAFE VERSION)
+// Submit Hunt (SAFE VERSION - PATCHED)
 // --------------------------------------
 async function submitHunt() {
-    const answer = document.getElementById("huntAnswer").value.trim();
+    const answerInput = document.getElementById("huntAnswer");
+    const resultBox = document.getElementById("huntResult");
+
+    const answer = answerInput.value.trim();
     const userId = localStorage.getItem("userCode");
 
     // ⭐ Prevent running without login
     if (!userId) {
-        document.getElementById("huntResult").textContent = "Please log in first.";
+        resultBox.textContent = "Please log in first.";
         return;
     }
 
     // ⭐ Prevent empty answers
     if (!answer) {
-        document.getElementById("huntResult").textContent = "Please enter an answer.";
+        resultBox.textContent = "Please enter an answer.";
         return;
     }
 
-    const res = await fetch(`${API}/weeklyHunt`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, answer })
-    });
+    let data;
+    try {
+        const res = await fetch(`${API}/weeklyHunt`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId, answer })
+        });
 
-    const data = await res.json();
+        data = await res.json();
+    } catch (err) {
+        resultBox.textContent = "Network error — try again.";
+        return;
+    }
 
     // ⭐ Show backend message
-    document.getElementById("huntResult").textContent = data.message || "No response.";
+    resultBox.textContent = data.message || "No response.";
 
     // ⭐ Refresh tokens ONLY if correct
     if (data.ok) {
         await loadUser();   // refresh tokenBalance, badge, grids
     }
 }
+
 
 // --------------------------------------
 // Build Mystery Grid
@@ -556,7 +566,11 @@ window.closeModal = closeModal;
 window.showMysteryModal = showMysteryModal;
 window.closeMysteryModal = closeMysteryModal;
 
-
+// --------------------------------------
+// Weekly Challenge Submit Listener ⭐
+// --------------------------------------
+document.getElementById("huntSubmitBtn")
+    .addEventListener("click", submitHunt);
 
 
 // --------------------------------------
