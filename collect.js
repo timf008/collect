@@ -447,7 +447,7 @@ function buildCharacterGrid() {
 // --------------------------------------
 async function swingCharacter(characterId) {
     try {
-        const response = await fetch(`${API_URL}/swing`, {
+        const response = await fetch(`${API}/swing`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -610,16 +610,10 @@ window.openModal = openModal;
 window.closeModal = closeModal;
 window.showMysteryModal = showMysteryModal;
 window.closeMysteryModal = closeMysteryModal;
+window.swingCharacter = swingCharacter;
 
 // --------------------------------------
 // Weekly Challenge Submit Listener ⭐
 // --------------------------------------
 document.getElementById("huntSubmitBtn")
     .addEventListener("click", submitHunt);
-
-
-// --------------------------------------
-// Init
-// --------------------------------------
-loadUser();
-loadWeeklyChallenge();
