@@ -155,7 +155,7 @@ body {
    Swing! Button
 ------------------------------ */
 .swing-btn {
-    background: #f59e0b;
+    background: #f59e0b !important;
     color: white;
     font-weight: bold;
     border: none;
