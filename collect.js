@@ -427,14 +427,59 @@ function buildCharacterGrid() {
         if (owned) card.classList.add("owned");
 
         card.innerHTML = `
-            <img src="${char.img}">
-            <h3>${char.name}</h3>
-            <p>Cost: 🔶${char.cost} </p>
-            ${owned ? "" : `<button onclick="openModal(${char.id}, ${char.cost}, '${char.name}')">Redeem</button>`}
-        `;
+    <img src="${char.img}">
+    <h3>${char.name}</h3>
+    <p>Cost: 🔶${char.cost}</p>
+
+    ${
+        owned
+            ? `<button onclick="swingCharacter(${char.id})">⚾ Swing!</button>`
+            : `<button onclick="openModal(${char.id}, ${char.cost}, '${char.name}')">Redeem</button>`
+    }
+`;
 
         grid.appendChild(card);
     });
+}
+
+// --------------------------------------
+// Swing Character ID
+// --------------------------------------
+async function swingCharacter(characterId) {
+    try {
+        const response = await fetch(`${API_URL}/swing`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userId: currentUser.userId,
+                characterId: characterId
+            })
+        });
+
+        const data = await response.json();
+
+        if (!data.ok) {
+            alert(data.message || "Unable to swing.");
+            return;
+        }
+
+        currentUser.tokens = data.tokens;
+        currentUser.swingStrikes = data.swingStrikes;
+
+        updateTokenDisplay();
+
+        if (data.hit) {
+            alert(`⚾ HIT! You earned ${data.reward} tokens!`);
+        } else {
+            alert(`STRIKE! ${data.swingStrikes}/3 strikes today.`);
+        }
+
+    } catch (error) {
+        console.error("Swing error:", error);
+        alert("Something went wrong.");
+    }
 }
 
 // --------------------------------------
