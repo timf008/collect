@@ -154,6 +154,7 @@ async function loadUser() {
     // ✔ Safe to use now
     currentUser = data;
     currentUser.userId = userId;
+    updateSwingCounter();
 
     // Update UI
     document.getElementById("tokenBalance").textContent = `Tokens: 🔶${currentUser.tokens}`;
@@ -467,6 +468,7 @@ window.swingCharacter = async function(characterId) {
 
         currentUser.tokens = data.tokens;
         currentUser.swingStrikes = data.swingStrikes;
+        updateSwingCounter();
 
         document.getElementById("tokenBalance").textContent =
             `Tokens: 🔶${currentUser.tokens}`;
@@ -482,6 +484,23 @@ window.swingCharacter = async function(characterId) {
         alert("Something went wrong.");
     }
 };
+
+// --------------------------------------
+// Update Swing Counter
+// --------------------------------------
+function updateSwingCounter() {
+    const strikes = currentUser.swingStrikes || 0;
+    const remaining = Math.max(0, 3 - strikes);
+
+    const counter = document.getElementById("swingCounter");
+
+    if (remaining === 0) {
+        counter.textContent = "Balls Remaining: OUT";
+    } else {
+        counter.textContent =
+            `Balls Remaining: ${Array(remaining).fill("⚾").join(" ")}`;
+    }
+}
 
 // --------------------------------------
 // Build Stadium Grid
