@@ -55,7 +55,7 @@ body {
 }
 
 #logoutHeaderBtn {
-    background: transparent;
+    background: #ffffff;
     color: #666;
     border: 1px solid #ccc;
     border-radius: 6px;
