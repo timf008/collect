@@ -434,7 +434,7 @@ function buildCharacterGrid() {
 
     ${
         owned
-            ? `<button onclick="swingCharacter(${char.id})">⚾ Swing!</button>`
+            ? `<button class="swing-btn" onclick="swingCharacter(${char.id})">⚾ Swing!</button>`
             : `<button onclick="openModal(${char.id}, ${char.cost}, '${char.name}')">Redeem</button>`
     }
 `;
