@@ -443,9 +443,9 @@ function buildCharacterGrid() {
 }
 
 // --------------------------------------
-// Swing Character ID
+// Swing Character
 // --------------------------------------
-async function swingCharacter(characterId) {
+window.swingCharacter = async function(characterId) {
     try {
         const response = await fetch(`${API}/swing`, {
             method: "POST",
@@ -468,7 +468,8 @@ async function swingCharacter(characterId) {
         currentUser.tokens = data.tokens;
         currentUser.swingStrikes = data.swingStrikes;
 
-        updateTokenDisplay();
+        document.getElementById("tokenBalance").textContent =
+            `Tokens: 🔶${currentUser.tokens}`;
 
         if (data.hit) {
             alert(`⚾ HIT! You earned ${data.reward} tokens!`);
@@ -480,7 +481,7 @@ async function swingCharacter(characterId) {
         console.error("Swing error:", error);
         alert("Something went wrong.");
     }
-}
+};
 
 // --------------------------------------
 // Build Stadium Grid
@@ -610,7 +611,6 @@ window.openModal = openModal;
 window.closeModal = closeModal;
 window.showMysteryModal = showMysteryModal;
 window.closeMysteryModal = closeMysteryModal;
-window.swingCharacter = swingCharacter;
 
 // --------------------------------------
 // Weekly Challenge Submit Listener ⭐
