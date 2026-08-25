@@ -54,6 +54,29 @@ body {
     user-select: none;
 }
 
+#logoutHeaderBtn {
+    background: transparent;
+    color: #666;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#logoutHeaderBtn:hover {
+    background: #f3f3f3;
+    color: #222;
+    border-color: #999;
+}
+
+#logoutHeaderBtn:active {
+    transform: scale(0.97);
+}
+    
+
 /* ------------------------------
    Level Battery Meter
 ------------------------------ */
