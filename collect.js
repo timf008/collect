@@ -45,16 +45,16 @@ if (!storedCode) {
 // Character List (20 total)
 // --------------------------------------
 const characters = [
-    { id: 101, name: "Little Slugger", cost: 5, img: "characters/slugger.png" },
-    { id: 102, name: "Strikeout King", cost: 10, img: "characters/strikeout_king.png" },
-    { id: 103, name: "Fastball Fred", cost: 5, img: "characters/fastball_fred.png" },
-    { id: 104, name: "Curveball Carl", cost: 5, img: "characters/curveball_carl.png" },
-    { id: 105, name: "Home Run Hank", cost: 10, img: "characters/home_run_hank.png" },
-    { id: 106, name: "Rookie Rocket", cost: 10, img: "characters/rookie_rocket.png" },
-    { id: 107, name: "Rock Star", cost: 15, img: "characters/rock_star.png" },
-    { id: 108, name: "Triple Threat Timmy", cost: 15, img: "characters/triple_threat_timmy.png" },
-    { id: 109, name: "Dugout Duo", cost: 5, img: "characters/dugout_duo.png" },
-    { id: 110, name: "Night Swinger", cost: 10, img: "characters/night_swinger.png" },
+    { id: 101, name: "Little Slugger", cost: 5, hitChance: 0.35, img: "characters/slugger.png" },
+    { id: 102, name: "Strikeout King", cost: 10, hitChance: 0.15, img: "characters/strikeout_king.png" },
+    { id: 103, name: "Fastball Fred", cost: 5, hitChance: 0.40, img: "characters/fastball_fred.png" },
+    { id: 104, name: "Curveball Carl", cost: 5, hitChance: 0.30, img: "characters/curveball_carl.png" },
+    { id: 105, name: "Home Run Hank", cost: 10, hitChance: 0.20, img: "characters/home_run_hank.png" },
+    { id: 106, name: "Rookie Rocket", cost: 10, hitChance: 0.35, img: "characters/rookie_rocket.png" },
+    { id: 107, name: "Rock Star", cost: 15, hitChance: 0.25, img: "characters/rock_star.png" },
+    { id: 108, name: "Triple Threat Timmy", cost: 15, hitChance: 0.30, img: "characters/triple_threat_timmy.png" },
+    { id: 109, name: "Dugout Duo", cost: 5, hitChance: 0.40, img: "characters/dugout_duo.png" },
+    { id: 110, name: "Night Swinger", cost: 10, hitChance: 0.25, img: "characters/night_swinger.png" },
 ];
 
 const stadiums = [
