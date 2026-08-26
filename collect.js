@@ -412,19 +412,27 @@ function checkMysteryUnlocks() {
 }
 
 
-
 // --------------------------------------
 // Build Mystery Chest
 // --------------------------------------
 function buildMysteryChest() {
     const chest = currentUser.mysteryChest;
-
     const container = document.getElementById("mysteryChestContent");
 
+    const cardCount = currentUser.collectibles.filter(
+        id => id >= 101 && id <= 130
+    ).length;
+
     if (!chest || !chest.unlocked) {
-        container.innerHTML = `<img src="mystery/mystery_chest.png" alt="Mystery Chest Locked">`;
+        container.innerHTML = `
+            <img src="mystery/mystery_chest.png" alt="Mystery Chest Locked">
+            <h4>${cardCount} of 30 Cards</h4>
+        `;
     } else {
-        container.innerHTML = `<img src="mystery/legendary_bat.png" alt="Legendary Bat">`;
+        container.innerHTML = `
+            <img src="mystery/legendary_bat.png" alt="Legendary Bat">
+            <h4>Legendary Bat</h4>
+        `;
     }
 }
 
