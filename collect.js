@@ -87,28 +87,31 @@ const mystery = [
     {
         id: 200,
         name: "Slugger Chew",
+        requirement: 5,
         img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_chew.png"
     },
     {
         id: 201,
         name: "Slugger Juice",
+        requirement: 5,
         img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_juice.png"
     },
     {
         id: 202,
         name: "Slugger Seeds",
+        requirement: 5,
         img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_seeds.png"
     },
     {
         id: 203,
         name: "Slugger Spray",
+        requirement: 10,
         img: "mystery/mystery_item.png",
         unlockedImg: "mystery/slugger_spray.png"
     }
-
 ];
 
 
@@ -295,7 +298,6 @@ async function submitHunt() {
     }
 }
 
-
 // --------------------------------------
 // Build Mystery Grid
 // --------------------------------------
@@ -303,8 +305,40 @@ function buildMysteryGrid() {
     const grid = document.getElementById("mysteryGrid");
     grid.innerHTML = "";
 
+    const charCount = currentUser.collectibles.filter(
+        id => id >= 101 && id <= 110
+    ).length;
+
+    const stadiumCount = currentUser.collectibles.filter(
+        id => id >= 111 && id <= 120
+    ).length;
+
+    const busCount = currentUser.collectibles.filter(
+        id => id >= 121 && id <= 130
+    ).length;
+
     mystery.forEach(item => {
         const unlocked = currentUser.mystery?.includes(item.id);
+
+        let progressText = "";
+
+        if (!unlocked) {
+            if (item.id === 200) {
+                progressText = `${charCount} of 5 Characters`;
+            }
+
+            if (item.id === 201) {
+                progressText = `${busCount} of 5 Team Buses`;
+            }
+
+            if (item.id === 202) {
+                progressText = `${stadiumCount} of 5 Stadiums`;
+            }
+
+            if (item.id === 203) {
+                progressText = `Complete Any Collection`;
+            }
+        }
 
         const card = document.createElement("div");
         card.className = "mystery-card";
@@ -312,7 +346,7 @@ function buildMysteryGrid() {
 
         card.innerHTML = `
             <img src="${unlocked ? item.unlockedImg : item.img}">
-            ${unlocked ? `<h4>${item.name}</h4>` : ""}
+            <h4>${unlocked ? item.name : progressText}</h4>
         `;
 
         grid.appendChild(card);
