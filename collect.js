@@ -453,7 +453,16 @@ function mysteryUnlockedPrompt(name, id) {
     showMysteryModal(name, imageUrl);
 }
 
-
+// --------------------------------------
+// Contact Stars for Each Hitter
+// --------------------------------------
+function getContactStars(hitChance) {
+    if (hitChance >= 0.40) return "★★★★★";
+    if (hitChance >= 0.35) return "★★★★☆";
+    if (hitChance >= 0.30) return "★★★☆☆";
+    if (hitChance >= 0.20) return "★★☆☆☆";
+    return "★☆☆☆☆";
+}
 
 // --------------------------------------
 // Build Character Grid
@@ -470,16 +479,17 @@ function buildCharacterGrid() {
         if (owned) card.classList.add("owned");
 
         card.innerHTML = `
-    <img src="${char.img}">
-    <h3>${char.name}</h3>
-    <p>Cost: 🔶${char.cost}</p>
+            <img src="${char.img}">
+            <h3>${char.name}</h3>
+            <p>Cost: 🔶${char.cost}</p>
+            <p>Contact Power: ${getContactStars(char.hitChance)} (${char.hitChance * 100}%)</p>
 
-    ${
-        owned
-            ? `<button class="swing-btn" onclick="swingCharacter(${char.id})">⚾ Swing!</button>`
-            : `<button onclick="openModal(${char.id}, ${char.cost}, '${char.name}')">Redeem</button>`
-    }
-`;
+            ${
+                owned
+                    ? `<button class="swing-btn" onclick="swingCharacter(${char.id})">⚾ Swing!</button>`
+                    : `<button onclick="openModal(${char.id}, ${char.cost}, '${char.name}')">Redeem</button>`
+            }
+        `;
 
         grid.appendChild(card);
     });
