@@ -521,7 +521,7 @@ body {
 
 /* ⭐ FIXED: Image keeps natural aspect ratio */
 .mystery-image {
-  width: 120px;        /* You can adjust this */
+  width: 160px;        /* You can adjust this */
   height: auto;        /* <-- prevents squishing */
   object-fit: contain; /* <-- keeps full image visible */
   display: block;
