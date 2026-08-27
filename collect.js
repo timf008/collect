@@ -158,6 +158,7 @@ async function loadUser() {
     currentUser = data;
     currentUser.userId = userId;
     updateSwingCounter();
+    updateSwingRefillButton();
 
     // Update UI
     document.getElementById("tokenBalance").textContent = `Tokens: 🔶${currentUser.tokens}`;
@@ -520,7 +521,9 @@ window.swingCharacter = async function(characterId) {
 
         currentUser.tokens = data.tokens;
         currentUser.swingStrikes = data.swingStrikes;
+
         updateSwingCounter();
+        updateSwingRefillButton();
 
         document.getElementById("tokenBalance").textContent =
             `Tokens: 🔶${currentUser.tokens}`;
@@ -552,6 +555,81 @@ function updateSwingCounter() {
         counter.textContent =
             `Balls Remaining: ${Array(remaining).fill("⚾").join(" ")}`;
     }
+}
+
+// --------------------------------------
+// Swing Ball Refill
+// --------------------------------------
+document.getElementById("swingRefillBtn")?.addEventListener("click", async () => {
+    try {
+        const response = await fetch(`${API}/swing-refill`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userId: currentUser.userId
+            })
+        });
+
+        const data = await response.json();
+
+        if (!data.ok) {
+            alert(data.message || "Unable to refill balls.");
+            return;
+        }
+
+        // Update local user state
+        currentUser.tokens = data.tokens;
+        currentUser.swingStrikes = data.swingStrikes;
+        currentUser.swingRefillUsed = data.swingRefillUsed;
+
+        // Update token balance
+        document.getElementById("tokenBalance").textContent =
+            `Tokens: 🔶${currentUser.tokens}`;
+
+        // Update balls
+        updateSwingCounter();
+
+        // Update refill button
+        updateSwingRefillButton();
+
+        alert("⚾⚾⚾ 3 more balls!");
+
+    } catch (error) {
+        console.error("Swing refill error:", error);
+        alert("Something went wrong.");
+    }
+});
+
+// --------------------------------------
+// Update Swing Refill Button
+// --------------------------------------
+function updateSwingRefillButton() {
+    const button = document.getElementById("swingRefillBtn");
+
+    if (!button) return;
+
+    const strikes = currentUser.swingStrikes || 0;
+    const refillUsed = currentUser.swingRefillUsed || false;
+
+    // Refill already used today
+    if (refillUsed) {
+        button.disabled = true;
+        button.textContent = "Refill Used";
+        return;
+    }
+
+    // Player still has balls remaining
+    if (strikes < 3) {
+        button.disabled = true;
+        button.textContent = "🔶10 → ⚾⚾⚾";
+        return;
+    }
+
+    // Player is out and refill is available
+    button.disabled = false;
+    button.textContent = "🔶10 → ⚾⚾⚾";
 }
 
 // --------------------------------------
