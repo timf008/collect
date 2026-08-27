@@ -753,6 +753,11 @@ function closeMysteryModal() {
     document.getElementById("mysteryModal").classList.add("hidden");
 }
 
+// Close mystery modal
+document
+    .getElementById("closeMysteryBtn")
+    ?.addEventListener("click", closeMysteryModal);
+
 // --------------------------------------
 // Expose globally for inline HTML
 // --------------------------------------
