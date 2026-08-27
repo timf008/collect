@@ -744,8 +744,18 @@ document.getElementById("cancelRedeemBtn").addEventListener("click", closeModal)
 // Mystery Modal
 // --------------------------------------
 function showMysteryModal(name, imageUrl) {
+    const image = document.getElementById("mysteryImage");
+
     document.getElementById("mysteryName").textContent = name;
-    document.getElementById("mysteryImage").src = imageUrl;
+    image.src = imageUrl;
+
+    // Legendary Bat gets larger display
+    if (name === "Legendary Bat") {
+        image.classList.add("legendary-bat-image");
+    } else {
+        image.classList.remove("legendary-bat-image");
+    }
+
     document.getElementById("mysteryModal").classList.remove("hidden");
 }
 
