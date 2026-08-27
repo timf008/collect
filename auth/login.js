@@ -7,17 +7,27 @@ export function initLogin(onSuccess) {
     const API = "https://collect-backend-tg58.onrender.com";
 
     // --------------------------------------
-    // Attach events immediately (modules run after DOM is parsed)
+    // Attach events immediately
     // --------------------------------------
     const loginBtn = document.getElementById("loginBtn");
     const createBtn = document.getElementById("createBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-    const logoutHeaderBtn = document.getElementById("logoutHeaderBtn");
 
     loginBtn?.addEventListener("click", login);
     createBtn?.addEventListener("click", createAccount);
-    logoutBtn?.addEventListener("click", logout);
-    logoutHeaderBtn?.addEventListener("click", logout);
+
+    // --------------------------------------
+    // Logout Buttons
+    // Uses event delegation so logout still
+    // works if the header is rebuilt later
+    // --------------------------------------
+    document.addEventListener("click", (event) => {
+        if (
+            event.target.id === "logoutBtn" ||
+            event.target.id === "logoutHeaderBtn"
+        ) {
+            logout();
+        }
+    });
 
     // --------------------------------------
     // Log Out
@@ -26,9 +36,8 @@ export function initLogin(onSuccess) {
         localStorage.removeItem("userCode");
         alert("Logged out");
 
-        // Show login UI again
-        document.getElementById("loginContainer").style.display = "flex";
-        document.getElementById("mainContent").style.display = "none";
+        // Reload app into clean logged-out state
+        window.location.reload();
     }
 
     // --------------------------------------
