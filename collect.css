@@ -47,6 +47,8 @@ body {
     gap: 20px;
     font-size: 18px;
     align-items: center;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 1px;
 }
 
 .header-logo {
