@@ -525,6 +525,13 @@ body {
   margin: 10px auto;
 }
 
+.legendary-bat-image {
+    width: 300px;
+    height: auto;
+    max-width: 90%;
+    object-fit: contain;
+}
+
 .mystery-name {
   font-size: 1.2em;
   font-weight: bold;
