@@ -2,43 +2,42 @@
 // LOGIN MODULE FOR COLLECT
 // =======================================
 
+// --------------------------------------
+// Log Out
+// --------------------------------------
+function logout() {
+    localStorage.removeItem("userCode");
+    alert("Logged out");
+
+    window.location.reload();
+}
+
+// --------------------------------------
+// Global Logout Listener
+// Works after login AND page refresh
+// --------------------------------------
+document.addEventListener("click", (event) => {
+    if (
+        event.target.id === "logoutBtn" ||
+        event.target.id === "logoutHeaderBtn"
+    ) {
+        logout();
+    }
+});
+
+
 export function initLogin(onSuccess) {
 
     const API = "https://collect-backend-tg58.onrender.com";
 
     // --------------------------------------
-    // Attach events immediately
+    // Login / Create Account Buttons
     // --------------------------------------
     const loginBtn = document.getElementById("loginBtn");
     const createBtn = document.getElementById("createBtn");
 
     loginBtn?.addEventListener("click", login);
     createBtn?.addEventListener("click", createAccount);
-
-    // --------------------------------------
-    // Logout Buttons
-    // Uses event delegation so logout still
-    // works if the header is rebuilt later
-    // --------------------------------------
-    document.addEventListener("click", (event) => {
-        if (
-            event.target.id === "logoutBtn" ||
-            event.target.id === "logoutHeaderBtn"
-        ) {
-            logout();
-        }
-    });
-
-    // --------------------------------------
-    // Log Out
-    // --------------------------------------
-    function logout() {
-        localStorage.removeItem("userCode");
-        alert("Logged out");
-
-        // Reload app into clean logged-out state
-        window.location.reload();
-    }
 
     // --------------------------------------
 // Create New Account
