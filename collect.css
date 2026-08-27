@@ -369,7 +369,6 @@ body {
 
 /* Image */
 .mystery-card img {
-    width: 100px;
     height: 160px;
     object-fit: contain;
     opacity: 0.6;
