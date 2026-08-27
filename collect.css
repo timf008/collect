@@ -32,6 +32,14 @@ body {
     );
 }
 
+/* ------------------------------
+   Header Mobile (Edge to edge)
+------------------------------ */
+
+* {
+    box-sizing: border-box;
+}
+
 
 /* Title */
 .collect-header h1 {
