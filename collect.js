@@ -162,10 +162,10 @@ async function loadUser() {
 
     // Update UI
     document.getElementById("tokenBalance").textContent = `Tokens: 🔶${currentUser.tokens}`;
-    document.getElementById("userCode").textContent = "User Code: " + userId;
+    document.getElementById("userCode").textContent = "Code: " + userId;
 
     const badge = getCollectorBadge(currentUser.collectibles.length);
-    document.getElementById("collectorBadge").textContent = "Level: " + badge;
+    document.getElementById("collectorBadge").textContent = badge;
 
     const levelNumber = badgeToLevel(badge);
     buildLevelMeter(levelNumber);
@@ -550,10 +550,10 @@ function updateSwingCounter() {
     const counter = document.getElementById("swingCounter");
 
     if (remaining === 0) {
-        counter.textContent = "Balls Remaining: OUT";
+        counter.textContent = "Balls: OUT";
     } else {
         counter.textContent =
-            `Balls Remaining: ${Array(remaining).fill("⚾").join(" ")}`;
+            `Balls: ${Array(remaining).fill("⚾").join(" ")}`;
     }
 }
 
